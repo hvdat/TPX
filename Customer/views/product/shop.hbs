@@ -1,0 +1,89 @@
+<!-- header -->
+<div class="top-header-area" id="sticker">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-sm-12 text-center">
+        <div class="main-menu-wrap">
+          <!-- logo -->
+          <div class="site-logo">
+            <a href="/">
+              <img src="https://i.imgur.com/owygF8v.png" alt="" />
+            </a>
+          </div>
+          <!-- logo -->
+
+          <!-- menu start -->
+          <nav class="main-menu">
+            <ul>
+              <li>
+                <a href="/">Trang chủ</a>
+              </li>
+              <li class="current-list-item">
+                <a href="/shop">Sản phẩm</a>
+              </li>
+              <li>
+                <a href="/news">Tin tức</a>
+              </li>
+              <li><a href="/contact">Liên hệ</a></li>
+              <li><a href="/about">Giới thiệu</a></li>
+              <li>
+                <div class="header-icons">
+                  <a class="shopping-cart" href="/cart"><i
+                      class="fas fa-shopping-cart"
+                    ></i></a>
+                  <a class="mobile-hide search-bar-icon" href="#"><i
+                      class="fas fa-search"
+                    ></i></a>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <a class="mobile-show search-bar-icon" href="#"><i
+              class="fas fa-search"
+            ></i></a>
+          <div class="mobile-menu"></div>
+          <!-- menu end -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end header -->
+
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="breadcrumb-text">
+          <p>Tươi sạch và Hữu Cơ</p>
+          <h1>Danh Mục Sản Phẩm</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end breadcrumb section -->
+
+<!-- products -->
+<div class="product-section mt-150 mb-150">
+  <div class="container">
+
+    <div class="row product-lists">
+      {{#products}}
+        <div class="col-lg-4 col-md-6 text-center strawberry">
+          <div class="shop/1-item">
+            <div class="product-image">
+              <a href="./shop/{{_id}}"><img src={{img_url}} alt="" /></a>
+            </div>
+            <h3>{{name}}</h3>
+            <p class="product-price"><span>Một Ký</span> {{price}} VNĐ</p>
+            <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+              Thêm vào Giỏ Hàng</a>
+          </div>
+        </div>
+      {{/products}}
+    </div>
+  </div>
+</div>
+<!-- end products -->
