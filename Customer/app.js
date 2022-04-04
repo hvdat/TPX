@@ -15,7 +15,7 @@ var newRouter = require("./routes/new");
 var cartRouter = require("./routes/cart");
 var checkoutRouter = require("./routes/checkout");
 var authenticationRouter = require("./components/authentication");
-
+const profileRouter = require("./components/profile");
 var app = express();
 
 // view engine setup
@@ -50,6 +50,7 @@ app.use("/contact", contactRouter);
 app.use("/news", newRouter);
 app.use("/cart", cartRouter);
 app.use("/checkout", checkoutRouter);
+app.use("/profile", profileRouter);
 app.use("/", authenticationRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
