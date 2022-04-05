@@ -1,4 +1,4 @@
-const {db} = require('../db');
+const { products } = require("../../models");
 exports.list = async () => {
-    return await db().collection('fruit').find().toArray();
+  return await products.findAll({ raw: true });
 };
