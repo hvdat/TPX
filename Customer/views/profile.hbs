@@ -70,15 +70,40 @@
 </div>
 <!-- end breadcrumb section -->
 
-<div class="profile-pic">
-  <label class="-label" for="file">
-    <span class="glyphicon glyphicon-camera"></span>
-    <span>Change Image</span>
-  </label>
-  <input id="file" type="file" onchange="loadFile(event)" />
+<div
+  class="card mx-auto shadow p-3 mb-5 bg-white rounded"
+  style="width: 18rem; margin: 2rem 0;"
+>
   <img
-    src="https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg"
-    id="output"
-    width="200"
+    class="card-img-top rounded mx-auto d-block"
+    src="{{user.avt}}"
+    alt="Card image cap"
   />
+  {{!-- {{#if user.avatar}}
+  {{else}}
+    <img
+      class="card-img-top mx-auto"
+      src="https://cdn-icons-png.flaticon.com/512/1/1247.png"
+      alt="Card image cap"
+    />
+  {{/if}} --}}
+  <div class="card-body">
+    <h5 class="card-title text-center">{{user.username}}</h5>
+    <form method="post">
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter your avatar link"
+          name="avtUrl"
+        />
+      </div>
+      <button
+        type="submit"
+        name="username"
+        class="btn btn-primary"
+        value="{{user.username}}"
+      >Submit</button>
+    </form>
+  </div>
 </div>
