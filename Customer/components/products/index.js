@@ -6,4 +6,6 @@ router.get("/", productControllers.list);
 
 router.get("/:productID", productControllers.details);
 
+router.get("/api/shop/:page", productControllers.apiList);
+
 module.exports = router;
