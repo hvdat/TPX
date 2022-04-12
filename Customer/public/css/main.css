@@ -353,7 +353,7 @@ p:last-child {
 }
 
 .mb-150 {
-  margin-bottom: 150px;
+  /* margin-bottom: 150px;   */
 }
 
 @media only screen and (max-width: 767.96px) {
@@ -1710,6 +1710,7 @@ p.excerpt {
 
 .pagination-wrap {
   margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .pagination-wrap ul {
@@ -1736,6 +1737,7 @@ p.excerpt {
 
 .pagination-wrap ul li a.active {
   background-color: #519259;
+  color: whitesmoke;
 }
 
 .single-artcile-bg {
