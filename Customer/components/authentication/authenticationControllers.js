@@ -5,10 +5,18 @@ exports.registerShow = (req, res, next) => {
 };
 
 exports.register = async function (req, res) {
+  const { email, password } = req.body;
+  const user = await authenticationService.isUsertExist(email);
+  if (user) {
+    res.render("authentication/register", {
+      title: "Register",
+      error: "Email already exists",
+    });
+  }
   await authenticationService.register(
     req.body.username,
-    req.body.password,
-    req.body.email,
+    password,
+    email,
     req.body.tel
   );
 
@@ -21,4 +29,9 @@ exports.loginShow = (req, res, next) => {
   } else {
     res.render("authentication/login");
   }
+};
+
+exports.checkEmailExist = async function (req, res) {
+  const user = await authenticationService.isUsertExist(req.params.email);
+  res.json(!!user);
 };

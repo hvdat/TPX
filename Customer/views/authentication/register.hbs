@@ -89,6 +89,7 @@
         type="email"
         name="email"
         placeholder="Email"
+        id="email"
       /></div>
     <div class="form-group"><input
         class="form-control"
@@ -102,3 +103,14 @@
       >Đăng Ký</button></div>
   </form>
 </div>
+{{#section "script"}}
+
+  <script type="application/javascript">
+    $('#email').on('input',function(){
+    $.getJSON('/api/check-email-exist/'+this.value,function(isExist){
+    if(isExist){ $('#email').addClass('is-invalid'); }else{
+    $('#email').removeClass('is-invalid');$('#email').addClass('is-valid'); } })
+    });
+  </script>
+
+{{/section}}

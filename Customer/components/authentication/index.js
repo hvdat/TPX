@@ -6,6 +6,10 @@ const passport = require("./passport");
 /* GET home page. */
 router.get("/register", authenticationControllers.registerShow);
 router.post("/register", authenticationControllers.register);
+router.get(
+  "/api/check-email-exist/:email",
+  authenticationControllers.checkEmailExist
+);
 router.get("/login", authenticationControllers.loginShow);
 router.post(
   "/login",
