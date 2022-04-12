@@ -1,7 +1,7 @@
 const { list } = require("./productsServices");
 const ITEM_PER_PAGE = 6;
 exports.list = async (req, res, next) => {
-  const { page } = req.query;
+  let { page } = req.query;
   if (!page || isNaN(page)) page = 1;
   const { count, rows: products } = await list(
     (page - 1) * ITEM_PER_PAGE,

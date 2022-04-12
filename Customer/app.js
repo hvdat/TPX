@@ -4,6 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const session = require("express-session");
+var exphbs = require("express-handlebars");
 
 const passport = require("./components/authentication/passport");
 var indexRouter = require("./routes/index");
@@ -19,8 +20,19 @@ const profileRouter = require("./components/profile");
 var app = express();
 
 // view engine setup
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "hbs");
+var hbs = exphbs.create({
+  defaultLayout: "layout",
+  extname: ".hbs",
+  helpers: {
+    section: function (name, options) {
+      if (!this._sections) this._sections = {};
+      this._sections[name] = options.fn(this);
+      return null;
+    },
+  },
+});
+app.engine("hbs", hbs.engine);
+app.set("view engine", ".hbs");
 
 app.use(logger("dev"));
 app.use(express.json());
