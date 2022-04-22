@@ -1,6 +1,7 @@
 const postService = require("./postService");
 
 exports.postShow = (req, res, next) => {
+  var page = req.query.page;
   res.render("post");
 };
 
@@ -15,5 +16,3 @@ exports.prod_post = async function (req, res) {
   );
   res.redirect("/");
 };
-
-

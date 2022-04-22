@@ -63,17 +63,17 @@
             <ul class="navbar-nav align-items-center right-nav-link">
                 <li class="nav-item dropdown-lg">
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown"
-                       href="javascript:void();">
+                        href="javascript:void();">
                         <i class="fa fa-envelope-open-o"></i></a>
                 </li>
                 <li class="nav-item dropdown-lg">
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown"
-                       href="javascript:void();">
+                        href="javascript:void();">
                         <i class="fa fa-bell-o"></i></a>
                 </li>
                 <li class="nav-item language">
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown"
-                       href="javascript:void();"><i class="fa fa-flag"></i></a>
+                        href="javascript:void();"><i class="fa fa-flag"></i></a>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li class="dropdown-item"><i class="flag-icon flag-icon-gb mr-2"></i> English</li>
                         <li class="dropdown-item"><i class="flag-icon flag-icon-fr mr-2"></i> French</li>
@@ -81,39 +81,19 @@
                         <li class="dropdown-item"><i class="flag-icon flag-icon-de mr-2"></i> German</li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
-                        <span class="user-profile"><img src="https://via.placeholder.com/110x110" class="img-circle"
-                                                        alt="user avatar"></span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li class="dropdown-item user-details">
-                            <a href="javaScript:void();">
-                                <div class="media">
-                                    <div class="avatar"><img class="align-self-start mr-3"
-                                                             src="https://via.placeholder.com/110x110"
-                                                             alt="user avatar"></div>
-                                    <div class="media-body">
-                                        <h6 class="mt-2 user-title">Sarajhon Mccoy</h6>
-                                        <p class="user-subtitle">mccoy@example.com</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-item"><i class="icon-envelope mr-2"></i> Inbox</li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-item"><i class="icon-wallet mr-2"></i> Account</li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-item"><i class="icon-settings mr-2"></i> Setting</li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-item"><i class="icon-power mr-2"></i> Logout</li>
-                    </ul>
+                <li class="nav-item dropdown-lg">
+                    {{#if user}}
+                    <span class="mt-2 user-title">chào, {{user.username}}</span>
+                    <h6 class="mt-2 user-title"><a href="/logout">Logout</a> </h6>
+                    {{else}}
+                    <h6 class="mt-2 user-title"><a href="/login">Login</a></h6>
+                    {{/if}}
                 </li>
             </ul>
         </nav>
     </header>
     <!--End topbar header-->
+    {{#if user}}
     <div class="clearfix"></div>
 
     <div class="content-wrapper">
@@ -128,27 +108,23 @@
                             <form method="post">
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input name="name" type="text" class="form-control form-control-rounded"
-                                           id="name"
-                                           placeholder="Enter Product's Name">
+                                    <input name="name" type="text" class="form-control form-control-rounded" id="name"
+                                        placeholder="Enter Product's Name">
                                 </div>
                                 <div class="form-group">
                                     <label for="price">Price</label>
-                                    <input name="price" type="text" class="form-control form-control-rounded"
-                                           id="price"
-                                           placeholder="Enter Price">
+                                    <input name="price" type="text" class="form-control form-control-rounded" id="price"
+                                        placeholder="Enter Price">
                                 </div>
                                 <div class="form-group">
                                     <label for="img_url">Image URL</label>
                                     <input name="img_url" type="text" class="form-control form-control-rounded"
-                                           id="img_url"
-                                           placeholder="Enter Image URL">
+                                        id="img_url" placeholder="Enter Image URL">
                                 </div>
                                 <div class="form-group">
                                     <label for="category">Category</label>
                                     <input name="category" type="text" class="form-control form-control-rounded"
-                                           id="category"
-                                           placeholder="Enter Product's category">
+                                        id="category" placeholder="Enter Product's category">
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-light btn-round px-5">
@@ -159,7 +135,8 @@
                         </div>
                     </div>
                 </div>
-            </div><!--End Row-->
+            </div>
+            <!--End Row-->
 
             <!--start overlay-->
             <div class="overlay toggle-menu"></div>
@@ -168,7 +145,12 @@
         </div>
         <!-- End container-fluid-->
 
-    </div><!--End content-wrapper-->
+    </div>
+    <!--End content-wrapper-->
+    {{else}}
+    <h1 class="content-wrapper">WARNING: UNAUTHORIZED ACCESS!<br> Please <a href="/login"
+            style="color:crimson;"><strong>LOGIN</strong></a> to use this function!</h1>
+    {{/if}}
     <!--Start Back To Top Button-->
     <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
     <!--End Back To Top Button-->
@@ -177,7 +159,7 @@
     <footer class="footer">
         <div class="container">
             <div class="text-center">
-                Copyright © 2018 Dashtreme Admin
+                19127558 - 19127352
             </div>
         </div>
     </footer>
@@ -221,4 +203,5 @@
     </div>
     <!--end color switcher-->
 
-</div><!--End wrapper-->
+</div>
+<!--End wrapper-->
