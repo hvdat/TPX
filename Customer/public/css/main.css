@@ -2801,3 +2801,7 @@ table.order-details tbody td {
   vertical-align: middle;
   width: 100%;
 }
+.product-section {
+  height: 980px;
+  transition: all 2s linear;
+}

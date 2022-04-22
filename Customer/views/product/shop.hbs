@@ -70,7 +70,7 @@
 </div>
 <!-- end breadcrumb section -->
 
-<!-- products -->
+{{!-- <!-- products -->
 <div class="product-section mt-150 mb-150">
   <div class="container">
 
@@ -118,4 +118,171 @@
       </ul>
     </div>
   </div>
+</div> --}}
+
+<!-- products -->
+<div class="product-section mt-150 mb-150">
+  <div class="container">
+
+      <div class="row">
+                <div class="col-md-12">
+                    <div class="product-filters">
+                        <ul>
+                            <li class="active" data-filter="*">All</li>
+                            <li data-filter=".strawberry">Strawberry</li>
+                            <li data-filter=".berry">Berry</li>
+                            <li data-filter=".lemon">Lemon</li> 
+                            </ul>
+                    </div>
+                </div>
+        </div>
+
+    <div class="row product-lists" id="context">
+
+    </div>
+  </div>
 </div>
+<!-- end products --> 
+
+<div class="row">
+  <div class="col-lg-12 text-center">
+    <div class="pagination-wrap">
+      <ul>
+        <li><a onclick="prevPage()" ">Prev</a></li>
+        {{#pages}}
+          <li><a onclick="loadPage({{.}})">{{.}}</a></li>
+        {{/pages}}
+        <li><a onclick="nextPage()">Next</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{{#section "script"}}
+
+  <script type="application/javascript">
+  loadPage(1);
+  var currPage = 1;
+  var limit = 0;
+  function loadPage(page) {
+    currPage=page;
+    $.ajax({
+      url: 'shop/api/'+page,
+      type: 'GET'
+    })
+    .then(data=>{
+
+      $('#context').html(data);
+        $('#context').fadeOut("fast");
+      const products = data.products;
+      limit=products.length;
+      for(let i =0; i < products.length; i++){
+        const p = products[i];
+        const items = $(`
+            <div class="col-lg-4 col-md-6 text-center strawberry">
+            <div class="shop/1-item">
+            <div class="product-image">
+              <a href="./shop/${p.id}"><img src=${p.img} alt="" /></a>
+            </div>
+            <h3>${p.name}</h3>
+            <p class="product-price"><span>Một Ký</span> ${p.price} VNĐ</p>
+            <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+              Thêm vào Giỏ Hàng</a>
+            </div>  
+            </div>
+        `);
+        setTimeout(function() { 
+                $('#context').append(items);
+
+        }, 200);
+        $('#context').fadeIn("slow");
+        
+      }
+    })
+  }
+
+function nextPage() {
+    if(currPage+1 > limit){
+      currPage = limit;
+    }
+    else{
+      currPage++;
+    }
+    let page=currPage;
+    console.log("🚀 ~ file: shop.hbs ~ line 205 ~ nextPage ~ page", page)
+    $.ajax({
+      url: 'shop/api/'+page,
+      type: 'GET'
+    })
+    .then(data=>{
+      $('#context').html(data);
+        $('#context').fadeOut("fast");
+      const products = data.products;
+      for(let i =0; i < products.length; i++){
+        const p = products[i];
+        const items = $(`
+            <div class="col-lg-4 col-md-6 text-center strawberry">
+            <div class="shop/1-item">
+            <div class="product-image">
+              <a href="./shop/${p.id}"><img src=${p.img} alt="" /></a>
+            </div>
+            <h3>${p.name}</h3>
+            <p class="product-price"><span>Một Ký</span> ${p.price} VNĐ</p>
+            <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+              Thêm vào Giỏ Hàng</a>
+            </div>  
+            </div>
+        `);
+        setTimeout(function() { 
+                $('#context').append(items);
+
+        }, 200);
+        $('#context').fadeIn("slow");
+      }
+    })
+  }
+
+function prevPage() {
+    if(currPage-1 <= 0){
+      currPage = 1;
+    }
+    else{
+      currPage--;
+    }
+    let page=currPage;
+    console.log("🚀 ~ file: shop.hbs ~ line 241 ~ prevPage ~ page", page)
+    $.ajax({
+      url: 'shop/api/'+page,
+      type: 'GET'
+    })
+    .then(data=>{
+      $('#context').html(data);
+        $('#context').fadeOut("fast");
+      const products = data.products;
+      for(let i =0; i < products.length; i++){
+        const p = products[i];
+        const items = $(`
+            <div class="col-lg-4 col-md-6 text-center strawberry">
+            <div class="shop/1-item">
+            <div class="product-image">
+              <a href="./shop/${p.id}"><img src=${p.img} alt="" /></a>
+            </div>
+            <h3>${p.name}</h3>
+            <p class="product-price"><span>Một Ký</span> ${p.price} VNĐ</p>
+            <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+              Thêm vào Giỏ Hàng</a>
+            </div>  
+            </div>
+        `);
+        setTimeout(function() { 
+                $('#context').append(items);
+
+        }, 200);
+        $('#context').fadeIn("slow");
+      }
+    })
+  }
+
+  </script>
+
+{{/section}}
