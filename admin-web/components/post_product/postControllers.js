@@ -4,6 +4,7 @@ exports.postShow = (req, res, next) => {
   res.render("post");
 };
 
+
 exports.prod_post = async function (req, res) {
   console.log(req.body.name);
   await postService.prod_post(
@@ -12,7 +13,7 @@ exports.prod_post = async function (req, res) {
     req.body.img_url,
     req.body.category
   );
-  res.redirect("/post");
+  res.redirect("/");
 };
 
 

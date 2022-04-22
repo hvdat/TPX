@@ -4,6 +4,6 @@ const postControllers = require("./postControllers");
 
 
 /* GET home page. */
-router.get("/post", postControllers.postShow);
-router.post("/post", postControllers.prod_post);
+router.get("/", postControllers.postShow);
+router.post("/", postControllers.prod_post);
 module.exports = router;
