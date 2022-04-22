@@ -9,14 +9,18 @@ module.exports = function(sequelize, DataTypes) {
     },
     name: {
       type: DataTypes.STRING(45),
-      allowNull: true
+      allowNull: false
     },
     price: {
       type: DataTypes.DECIMAL(15,3),
-      allowNull: true
+      allowNull: false
     },
     img: {
       type: DataTypes.STRING(2048),
+      allowNull: false
+    },
+    category: {
+      type: DataTypes.STRING(45),
       allowNull: true
     }
   }, {

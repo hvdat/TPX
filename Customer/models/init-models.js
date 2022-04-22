@@ -6,6 +6,7 @@ function initModels(sequelize) {
   var products = _products(sequelize, DataTypes);
   var users = _users(sequelize, DataTypes);
 
+
   return {
     products,
     users,
