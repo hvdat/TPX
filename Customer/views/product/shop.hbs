@@ -1,72 +1,72 @@
 <!-- header -->
 <div class="top-header-area" id="sticker">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 col-sm-12 text-center">
-        <div class="main-menu-wrap">
-          <!-- logo -->
-          <div class="site-logo">
-            <a href="/">
-              <img src="https://i.imgur.com/owygF8v.png" alt="" />
-            </a>
-          </div>
-          <!-- logo -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 text-center">
+                <div class="main-menu-wrap">
+                    <!-- logo -->
+                    <div class="site-logo">
+                        <a href="/">
+                            <img style="max-width: 50%" src="https://i.imgur.com/owygF8v.png" alt=""/>
+                        </a>
+                    </div>
+                    <!-- logo -->
 
-          <!-- menu start -->
-          <nav class="main-menu">
-            <ul>
-              <li>
-                <a href="/">Trang chủ</a>
-              </li>
-              <li class="current-list-item">
-                <a href="/shop">Sản phẩm</a>
-              </li>
-              <li>
-                <a href="/news">Tin tức</a>
-              </li>
-              <li><a href="/contact">Liên hệ</a></li>
-              <li><a href="/about">Giới thiệu</a></li>
-              <li>
-                <div class="header-icons">
-                  <a class="shopping-cart" href="/cart"><i
-                      class="fas fa-shopping-cart"
+                    <!-- menu start -->
+                    <nav class="main-menu">
+                        <ul>
+                            <li>
+                                <a href="/">Trang chủ</a>
+                            </li>
+                            <li class="current-list-item">
+                                <a href="/shop">Sản phẩm</a>
+                            </li>
+                            <li>
+                                <a href="/news">Tin tức</a>
+                            </li>
+                            <li><a href="/contact">Liên hệ</a></li>
+                            <li><a href="/about">Giới thiệu</a></li>
+                            <li>
+                                <div class="header-icons">
+                                    <a class="shopping-cart" href="/cart"><i
+                                            class="fas fa-shopping-cart"
+                                    ></i></a>
+                                    {{#if user}}
+                                        <a>chào, {{user.username}}!</a>
+                                        <a class="mobile-hide search-bar-icon" href="/logout"><span
+                                        >Đăng xuất</span></a>{{else}}
+                                        <a class="mobile-hide search-bar-icon" href="/login"><span
+                                        >Đăng nhập</span></a>
+                                    {{/if}}
+
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <a class="mobile-show search-bar-icon" href="#"><i
+                            class="fas fa-search"
                     ></i></a>
-                  {{#if user}}
-                    <a>chào, {{user.username}}!</a>
-                    <a class="mobile-hide search-bar-icon" href="/logout"><span
-                      >Đăng xuất</span></a>{{else}}
-                    <a class="mobile-hide search-bar-icon" href="/login"><span
-                      >Đăng nhập</span></a>
-                  {{/if}}
-
+                    <div class="mobile-menu"></div>
+                    <!-- menu end -->
                 </div>
-              </li>
-            </ul>
-          </nav>
-          <a class="mobile-show search-bar-icon" href="#"><i
-              class="fas fa-search"
-            ></i></a>
-          <div class="mobile-menu"></div>
-          <!-- menu end -->
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 <!-- end header -->
 
 <!-- breadcrumb-section -->
 <div class="breadcrumb-section breadcrumb-bg">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2 text-center">
-        <div class="breadcrumb-text">
-          <p>Tươi sạch và Hữu Cơ</p>
-          <h1>Danh Mục Sản Phẩm</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <p>Tươi sạch và Hữu Cơ</p>
+                    <h1>Danh Mục Sản Phẩm</h1>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 <!-- end breadcrumb section -->
 
@@ -122,63 +122,108 @@
 
 <!-- products -->
 <div class="product-section mt-150 mb-150">
-  <div class="container">
+    <div class="container">
 
-      <div class="row">
-                <div class="col-md-12">
-                    <div class="product-filters">
-                        <ul>
-                            <li class="active" data-filter="*">All</li>
-                            <li data-filter=".strawberry">Strawberry</li>
-                            <li data-filter=".berry">Berry</li>
-                            <li data-filter=".lemon">Lemon</li> 
-                            </ul>
-                    </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-filters">
+                    <ul>
+                        {{#cateName}}
+                            <li class="active" onclick="loadCategory({{id}},1)">
+                                {{name}}
+                            </li>
+                        {{/cateName}}
+                    </ul>
                 </div>
+            </div>
         </div>
 
-    <div class="row product-lists" id="context">
+        <div class=" row product-lists" id="context">
 
+        </div>
     </div>
-  </div>
 </div>
-<!-- end products --> 
+<!-- end products -->
 
 <div class="row">
-  <div class="col-lg-12 text-center">
-    <div class="pagination-wrap">
-      <ul>
-        <li><a onclick="prevPage()" ">Prev</a></li>
-        {{#pages}}
-          <li><a onclick="loadPage({{.}})">{{.}}</a></li>
-        {{/pages}}
-        <li><a onclick="nextPage()">Next</a></li>
-      </ul>
+    <div class="col-lg-12 text-center">
+        <div class="pagination-wrap">
+            <ul>
+                <li><a onclick="prevPage()">Prev</a></li>
+                {{#pages}}
+                    <li><a onclick="loadPage({{.}})">{{.}}</a></li>
+                {{/pages}}
+                <li><a onclick="nextPage()">Next</a></li>
+            </ul>
+        </div>
     </div>
-  </div>
 </div>
 
 {{#section "script"}}
 
-  <script type="application/javascript">
-  loadPage(1);
-  var currPage = 1;
-  var limit = 0;
-  function loadPage(page) {
-    currPage=page;
-    $.ajax({
-      url: 'shop/api/'+page,
-      type: 'GET'
-    })
-    .then(data=>{
+    <script type="application/javascript">
+        loadPage(1);
+        // loadCategory(1);
+        var currPage = 1;
+        var limit = 0;
 
-      $('#context').html(data);
-        $('#context').fadeOut("fast");
-      const products = data.products;
-      limit=products.length;
-      for(let i =0; i < products.length; i++){
-        const p = products[i];
-        const items = $(`
+        function loadPage(page) {
+            currPage = page;
+            $.ajax({
+                url: 'shop/api/' + page,
+                type: 'GET'
+            })
+                    .then(data => {
+
+                        $('#context').html(data);
+                        $('#context').fadeOut("fast");
+                        const products = data.products;
+                        console.log(products);
+                        limit = limit > products.length ? limit : products.length;
+                        for (let i = 0; i < products.length; i++) {
+                            const p = products[i];
+                            const items = $(`
+                                <div class="col-lg-4 col-md-6 text-center strawberry">
+                                    <div class="shop/1-item">
+                                        <div class="product-image">
+                                            <a href="./shop/${p.id}"><img src=${p.img} alt=""/></a>
+                                        </div>
+                                        <h3>${p.name}</h3>
+                                        <p class="product-price"><span>Một Ký</span> ${p.price} VNĐ</p>
+                                        <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+                                            Thêm vào Giỏ Hàng</a>
+                                    </div>
+                                </div>
+                            `);
+                            setTimeout(function () {
+                                $('#context').append(items);
+
+                            }, 200);
+                            $('#context').fadeIn("slow");
+
+                        }
+                    })
+        }
+
+        function nextPage() {
+            if (currPage + 1 > limit) {
+                currPage = limit;
+            } else {
+                currPage++;
+            }
+            let page = currPage;
+            console.log("🚀 ~ file: shop.hbs ~ line 205 ~ nextPage ~ page", page)
+            $.ajax({
+                url: 'shop/api/' + page,
+                type: 'GET'
+            })
+                    .then(data => {
+                        $('#context').html(data);
+                        $('#context').fadeOut("fast");
+                        const products = data.products;
+                        for (let i = 0; i < products.length; i++) {
+                            const p = products[i];
+                            const items = $(`
             <div class="col-lg-4 col-md-6 text-center strawberry">
             <div class="shop/1-item">
             <div class="product-image">
@@ -188,39 +233,37 @@
             <p class="product-price"><span>Một Ký</span> ${p.price} VNĐ</p>
             <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
               Thêm vào Giỏ Hàng</a>
-            </div>  
+            </div>
             </div>
         `);
-        setTimeout(function() { 
-                $('#context').append(items);
+                            setTimeout(function () {
+                                $('#context').append(items);
 
-        }, 200);
-        $('#context').fadeIn("slow");
-        
-      }
-    })
-  }
+                            }, 200);
+                            $('#context').fadeIn("slow");
+                        }
+                    })
+        }
 
-function nextPage() {
-    if(currPage+1 > limit){
-      currPage = limit;
-    }
-    else{
-      currPage++;
-    }
-    let page=currPage;
-    console.log("🚀 ~ file: shop.hbs ~ line 205 ~ nextPage ~ page", page)
-    $.ajax({
-      url: 'shop/api/'+page,
-      type: 'GET'
-    })
-    .then(data=>{
-      $('#context').html(data);
-        $('#context').fadeOut("fast");
-      const products = data.products;
-      for(let i =0; i < products.length; i++){
-        const p = products[i];
-        const items = $(`
+        function prevPage() {
+            if (currPage - 1 <= 0) {
+                currPage = 1;
+            } else {
+                currPage--;
+            }
+            let page = currPage;
+            console.log("🚀 ~ file: shop.hbs ~ line 241 ~ prevPage ~ page", page)
+            $.ajax({
+                url: 'shop/api/' + page,
+                type: 'GET'
+            })
+                    .then(data => {
+                        $('#context').html(data);
+                        $('#context').fadeOut("fast");
+                        const products = data.products;
+                        for (let i = 0; i < products.length; i++) {
+                            const p = products[i];
+                            const items = $(`
             <div class="col-lg-4 col-md-6 text-center strawberry">
             <div class="shop/1-item">
             <div class="product-image">
@@ -230,38 +273,32 @@ function nextPage() {
             <p class="product-price"><span>Một Ký</span> ${p.price} VNĐ</p>
             <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
               Thêm vào Giỏ Hàng</a>
-            </div>  
+            </div>
             </div>
         `);
-        setTimeout(function() { 
-                $('#context').append(items);
+                            setTimeout(function () {
+                                $('#context').append(items);
 
-        }, 200);
-        $('#context').fadeIn("slow");
-      }
-    })
-  }
+                            }, 200);
+                            $('#context').fadeIn("slow");
+                        }
+                    })
+        }
 
-function prevPage() {
-    if(currPage-1 <= 0){
-      currPage = 1;
-    }
-    else{
-      currPage--;
-    }
-    let page=currPage;
-    console.log("🚀 ~ file: shop.hbs ~ line 241 ~ prevPage ~ page", page)
-    $.ajax({
-      url: 'shop/api/'+page,
-      type: 'GET'
-    })
-    .then(data=>{
-      $('#context').html(data);
-        $('#context').fadeOut("fast");
-      const products = data.products;
-      for(let i =0; i < products.length; i++){
-        const p = products[i];
-        const items = $(`
+        function loadCategory(id, page) {
+            $.ajax({
+                url: 'shop/api/cate/' + id + '/' + page,
+                type: 'GET'
+            })
+                    .then(data => {
+                        $('#context').html(data);
+                        $('#context').fadeOut("fast");
+                        const products = data.products;
+                        for (let i = 0; i < products.length; i++) {
+                            const p = products[i];
+                            console.log(p);
+
+                            const items = $(`
             <div class="col-lg-4 col-md-6 text-center strawberry">
             <div class="shop/1-item">
             <div class="product-image">
@@ -271,18 +308,17 @@ function prevPage() {
             <p class="product-price"><span>Một Ký</span> ${p.price} VNĐ</p>
             <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
               Thêm vào Giỏ Hàng</a>
-            </div>  
+            </div>
             </div>
         `);
-        setTimeout(function() { 
-                $('#context').append(items);
+                            setTimeout(function () {
+                                $('#context').append(items);
 
-        }, 200);
-        $('#context').fadeIn("slow");
-      }
-    })
-  }
-
-  </script>
+                            }, 200);
+                            $('#context').fadeIn("slow");
+                        }
+                    })
+        }
+    </script>
 
 {{/section}}

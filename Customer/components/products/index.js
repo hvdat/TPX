@@ -8,4 +8,8 @@ router.get("/:productID", productControllers.details);
 
 router.get("/api/:page", productControllers.apiList);
 
+// route.get("/api/:page/:productID", productControllers.apiDetails);
+
+router.get("/api/cate/:cateID/:page", productControllers.apiCategory);
+
 module.exports = router;

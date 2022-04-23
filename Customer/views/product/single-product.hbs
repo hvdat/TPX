@@ -1,164 +1,164 @@
 <!-- header -->
 <div class="top-header-area" id="sticker">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 col-sm-12 text-center">
-        <div class="main-menu-wrap">
-          <!-- logo -->
-          <div class="site-logo">
-            <a href="/">
-              <img src="https://i.imgur.com/owygF8v.png" alt="" />
-            </a>
-          </div>
-          <!-- logo -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 text-center">
+                <div class="main-menu-wrap">
+                    <!-- logo -->
+                    <div class="site-logo">
+                        <a href="/">
+                            <img style="max-width: 50%" src="https://i.imgur.com/owygF8v.png" alt=""/>
+                        </a>
+                    </div>
+                    <!-- logo -->
 
-          <!-- menu start -->
-          <nav class="main-menu">
-            <ul>
-              <li>
-                <a href="/">Trang chủ</a>
-              </li>
-              <li class="current-list-item">
-                <a href="/shop">Sản phẩm</a>
-              </li>
-              <li>
-                <a href="/news">Tin tức</a>
-              </li>
-              <li><a href="/contact">Liên hệ</a></li>
-              <li><a href="/about">Giới thiệu</a></li>
-              <li>
-                <div class="header-icons">
-                  <a class="shopping-cart" href="/cart"><i
-                      class="fas fa-shopping-cart"
+                    <!-- menu start -->
+                    <nav class="main-menu">
+                        <ul>
+                            <li>
+                                <a href="/">Trang chủ</a>
+                            </li>
+                            <li class="current-list-item">
+                                <a href="/shop">Sản phẩm</a>
+                            </li>
+                            <li>
+                                <a href="/news">Tin tức</a>
+                            </li>
+                            <li><a href="/contact">Liên hệ</a></li>
+                            <li><a href="/about">Giới thiệu</a></li>
+                            <li>
+                                <div class="header-icons">
+                                    <a class="shopping-cart" href="/cart"><i
+                                            class="fas fa-shopping-cart"
+                                    ></i></a>
+                                    {{#if user}}
+                                        <a>chào, {{user.username}}!</a>
+                                        <a class="mobile-hide search-bar-icon" href="/logout"><span
+                                        >Đăng xuất</span></a>{{else}}
+                                        <a class="mobile-hide search-bar-icon" href="/login"><span
+                                        >Đăng nhập</span></a>
+                                    {{/if}}
+
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <a class="mobile-show search-bar-icon" href="#"><i
+                            class="fas fa-search"
                     ></i></a>
-                  {{#if user}}
-                    <a>chào, {{user.username}}!</a>
-                    <a class="mobile-hide search-bar-icon" href="/logout"><span
-                      >Đăng xuất</span></a>{{else}}
-                    <a class="mobile-hide search-bar-icon" href="/login"><span
-                      >Đăng nhập</span></a>
-                  {{/if}}
-
+                    <div class="mobile-menu"></div>
+                    <!-- menu end -->
                 </div>
-              </li>
-            </ul>
-          </nav>
-          <a class="mobile-show search-bar-icon" href="#"><i
-              class="fas fa-search"
-            ></i></a>
-          <div class="mobile-menu"></div>
-          <!-- menu end -->
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 <!-- end header -->
 <!-- breadcrumb-section -->
 <div class="breadcrumb-section breadcrumb-bg">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2 text-center">
-        <div class="breadcrumb-text">
-          <p>Chi Tiết Sản Phẩm</p>
-          <h1>{{name}}</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <p>Chi Tiết Sản Phẩm</p>
+                    <h1>{{name}}</h1>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 <!-- end breadcrumb section -->
 
 <!-- single product -->
 <div class="single-product mt-150 mb-150">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-5">
-        <div class="single-product-img">
-          <img src="https://i.imgur.com/Rf5ZzOI.jpg" alt="" />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="single-product-img">
+                    <img src="https://i.imgur.com/Rf5ZzOI.jpg" alt=""/>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="single-product-content">
+                    <h3>Táo xanh</h3>
+                    <p class="single-product-pricing"><span>Một Ký</span> 90.000 VNĐ</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta
+                        sint dignissimos, rem commodi cum voluptatem quae reprehenderit
+                        repudiandae ea tempora incidunt ipsa, quisquam animi perferendis eos
+                        eum modi! Tempora, earum.</p>
+                    <div class="single-product-form">
+                        <form action="index">
+                            <input type="number" placeholder="0"/>
+                        </form>
+                        <a href="/cart" class="cart-btn"><i
+                                class="fas fa-shopping-cart"
+                        ></i>
+                            Thêm vào Giỏ Hàng</a>
+                        <p><strong>Danh mục: </strong>Trái cây, Hữu cơ</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-md-7">
-        <div class="single-product-content">
-          <h3>Táo xanh</h3>
-          <p class="single-product-pricing"><span>Một Ký</span> 90.000 VNĐ</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta
-            sint dignissimos, rem commodi cum voluptatem quae reprehenderit
-            repudiandae ea tempora incidunt ipsa, quisquam animi perferendis eos
-            eum modi! Tempora, earum.</p>
-          <div class="single-product-form">
-            <form action="index">
-              <input type="number" placeholder="0" />
-            </form>
-            <a href="/cart" class="cart-btn"><i
-                class="fas fa-shopping-cart"
-              ></i>
-              Thêm vào Giỏ Hàng</a>
-            <p><strong>Danh mục: </strong>Trái cây, Hữu cơ</p>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
 <!-- end single product -->
 
 <!-- more products -->
 <div class="more-products mb-150">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2 text-center">
-        <div class="section-title">
-          <h3>Sản Phẩm <span class="orange-text">Liên Quan</span></h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid,
-            fuga quas itaque eveniet beatae optio.</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="section-title">
+                    <h3>Sản Phẩm <span class="orange-text">Liên Quan</span></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid,
+                        fuga quas itaque eveniet beatae optio.</p>
+                </div>
+            </div>
         </div>
-      </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 text-center">
+                <div class="single-product-item">
+                    <div class="product-image">
+                        <a href="single-product"><img
+                                src="https://i.imgur.com/QVkdWDf.jpg"
+                                alt=""
+                        /></a>
+                    </div>
+                    <h3>Dâu tây</h3>
+                    <p class="product-price"><span>Một Ký</span> 230.000 VNĐ</p>
+                    <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+                        Thêm vào Giỏ Hàng</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 text-center">
+                <div class="single-product-item">
+                    <div class="product-image">
+                        <a href="single-product"><img
+                                src="https://i.imgur.com/HU2Lf46.jpg"
+                                alt=""
+                        /></a>
+                    </div>
+                    <h3>Nho</h3>
+                    <p class="product-price"><span>Một Ký</span> 190.000 VNĐ</p>
+                    <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+                        Thêm vào Giỏ Hàng</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 offset-lg-0 offset-md-3 text-center">
+                <div class="single-product-item">
+                    <div class="product-image">
+                        <a href="single-product"><img
+                                src="https://i.imgur.com/YhvZ7bg.jpg"
+                                alt=""
+                        /></a>
+                    </div>
+                    <h3>Chanh Mỹ</h3>
+                    <p class="product-price"><span>Một Ký</span> 150.000 VNĐ</p>
+                    <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+                        Thêm vào Giỏ Hàng</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="row">
-      <div class="col-lg-4 col-md-6 text-center">
-        <div class="single-product-item">
-          <div class="product-image">
-            <a href="single-product"><img
-                src="https://i.imgur.com/QVkdWDf.jpg"
-                alt=""
-              /></a>
-          </div>
-          <h3>Dâu tây</h3>
-          <p class="product-price"><span>Một Ký</span> 230.000 VNĐ</p>
-          <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
-            Thêm vào Giỏ Hàng</a>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 text-center">
-        <div class="single-product-item">
-          <div class="product-image">
-            <a href="single-product"><img
-                src="https://i.imgur.com/HU2Lf46.jpg"
-                alt=""
-              /></a>
-          </div>
-          <h3>Nho</h3>
-          <p class="product-price"><span>Một Ký</span> 190.000 VNĐ</p>
-          <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
-            Thêm vào Giỏ Hàng</a>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 offset-lg-0 offset-md-3 text-center">
-        <div class="single-product-item">
-          <div class="product-image">
-            <a href="single-product"><img
-                src="https://i.imgur.com/YhvZ7bg.jpg"
-                alt=""
-              /></a>
-          </div>
-          <h3>Chanh Mỹ</h3>
-          <p class="product-price"><span>Một Ký</span> 150.000 VNĐ</p>
-          <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
-            Thêm vào Giỏ Hàng</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 <!-- end more products -->

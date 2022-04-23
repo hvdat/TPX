@@ -1,371 +1,377 @@
 <!-- header -->
 <div class="top-header-area" id="sticker">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 col-sm-12 text-center">
-        <div class="main-menu-wrap">
-          <!-- logo -->
-          <div class="site-logo">
-            <a href="/">
-              <img src="https://i.imgur.com/owygF8v.png" alt="" />
-            </a>
-          </div>
-          <!-- logo -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 text-center">
+                <div class="main-menu-wrap">
+                    <!-- logo -->
+                    <div class="site-logo">
+                        <a href="/">
+                            <img style="max-width: 50%" src="https://i.imgur.com/owygF8v.png" alt=""/>
+                        </a>
+                    </div>
+                    <!-- logo -->
 
-          <!-- menu start -->
-          <nav class="main-menu">
-            <ul>
-              <li class="current-list-item">
-                <a href="/">Trang chủ</a>
-              </li>
-              <li>
-                <a href="/shop">Sản phẩm</a>
-              </li>
-              <li>
-                <a href="/news">Tin tức</a>
-              </li>
-              <li><a href="/contact">Liên hệ</a></li>
-              <li><a href="/about">Giới thiệu</a></li>
-              <li>
-                <div class="header-icons">
-                  <a class="shopping-cart" href="/cart"><i
-                      class="fas fa-shopping-cart"
-                    ></i></a>
-                  {{#if user}}
-                    <a>chào, {{user.username}}!</a>
-                    <a class="mobile-hide search-bar-icon" href="/logout"><span
-                      >Đăng xuất</span></a>{{else}}
-                    <a class="mobile-hide search-bar-icon" href="/login"><span
-                      >Đăng nhập</span></a>
-                  {{/if}}
+                    <!-- menu start -->
+                    <nav class="main-menu">
+                        <ul>
+                            <li class="current-list-item">
+                                <a href="/">Trang chủ</a>
+                            </li>
+                            <li>
+                                <a href="/shop">Sản phẩm</a>
+                            </li>
+                            <li>
+                                <a href="/news">Tin tức</a>
+                            </li>
+                            <li><a href="/contact">Liên hệ</a></li>
+                            <li><a href="/about">Giới thiệu</a></li>
+                            <li>
+                                <div class="header-icons">
+                                    <a class="shopping-cart" href="/cart"><i
+                                            class="fas fa-shopping-cart"
+                                    ></i></a>
+                                    {{#if user}}
+                                        <a>chào, {{user.username}}!</a>
+                                        <a class="mobile-hide search-bar-icon" href="/logout"><span
+                                        >Đăng xuất</span></a>{{else}}
+                                        <a class="mobile-hide search-bar-icon" href="/login"><span
+                                        >Đăng nhập</span></a>
+                                    {{/if}}
 
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <a class="mobile-show search-bar-icon" href="#"></a>
+                    <div class="mobile-menu"></div>
+                    <!-- menu end -->
                 </div>
-              </li>
-            </ul>
-          </nav>
-          <a class="mobile-show search-bar-icon" href="#"></a>
-          <div class="mobile-menu"></div>
-          <!-- menu end -->
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 <!-- end header -->
 
 <!-- home page slider -->
 <div class="homepage-slider">
-  <!-- single home slider -->
-  <div class="single-homepage-slider homepage-bg-1">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-lg-7 offset-lg-1 offset-xl-0">
-          <div class="hero-text">
-            <div class="hero-text-tablecell">
-              <p class="subtitle">Thực phẩm hữu cơ tươi sạch</p>
-              <h1>Trái cây ngon theo mùa</h1>
-              <div class="hero-btns">
-                <a href="shop" class="boxed-btn">Ghé Cửa Hàng</a>
-                <a href="contact" class="bordered-btn">Liên Hệ Với Chúng Tôi</a>
-              </div>
+    <!-- single home slider -->
+    <div class="single-homepage-slider homepage-bg-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-7 offset-lg-1 offset-xl-0">
+                    <div class="hero-text">
+                        <div class="hero-text-tablecell">
+                            <p class="subtitle">Thực phẩm hữu cơ tươi sạch</p>
+                            <h1>Trái cây ngon theo mùa</h1>
+                            <div class="hero-btns">
+                                <a href="shop" class="boxed-btn">Ghé Cửa Hàng</a>
+                                <a href="contact" class="bordered-btn">Liên Hệ Với Chúng Tôi</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  <!-- single home slider -->
-  <div class="single-homepage-slider homepage-bg-2">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-10 offset-lg-1 text-center">
-          <div class="hero-text">
-            <div class="hero-text-tablecell">
-              <p class="subtitle">Trái cây tươi mỗi ngày</p>
-              <h1>100% Hữu Cơ</h1>
-              <div class="hero-btns">
-                <a href="shop" class="boxed-btn">Ghé Cửa Hàng</a>
-                <a href="contact" class="bordered-btn">Liên Hệ Với Chúng Tôi</a>
-              </div>
+    <!-- single home slider -->
+    <div class="single-homepage-slider homepage-bg-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1 text-center">
+                    <div class="hero-text">
+                        <div class="hero-text-tablecell">
+                            <p class="subtitle">Trái cây tươi mỗi ngày</p>
+                            <h1>100% Hữu Cơ</h1>
+                            <div class="hero-btns">
+                                <a href="shop" class="boxed-btn">Ghé Cửa Hàng</a>
+                                <a href="contact" class="bordered-btn">Liên Hệ Với Chúng Tôi</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  <!-- single home slider -->
-  <div class="single-homepage-slider homepage-bg-3">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-10 offset-lg-1 text-right">
-          <div class="hero-text">
-            <div class="hero-text-tablecell">
-              <p class="subtitle">Ngày Hội Siêu Giảm Giá Đang Diễn Ra</p>
-              <h1>Hưởng Quyền Lợi Ngay!</h1>
-              <div class="hero-btns">
-                <a href="shop" class="boxed-btn">Ghé Cửa Hàng</a>
-                <a href="contact" class="bordered-btn">Liên Hệ Với Chúng Tôi</a>
-              </div>
+    <!-- single home slider -->
+    <div class="single-homepage-slider homepage-bg-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1 text-right">
+                    <div class="hero-text">
+                        <div class="hero-text-tablecell">
+                            <p class="subtitle">Ngày Hội Siêu Giảm Giá Đang Diễn Ra</p>
+                            <h1>Hưởng Quyền Lợi Ngay!</h1>
+                            <div class="hero-btns">
+                                <a href="shop" class="boxed-btn">Ghé Cửa Hàng</a>
+                                <a href="contact" class="bordered-btn">Liên Hệ Với Chúng Tôi</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 <!-- end home page slider -->
 
 <!-- product section -->
 <div class="product-section mt-150 mb-150">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2 text-center">
-        <div class="section-title">
-          <h3><span class="orange-text">Sản Phẩm</span> của chúng tôi</h3>
-          <p>
-            Những thực phẩm hữu cơ 100%
-          </p>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="section-title">
+                    <h3><span class="orange-text">Sản Phẩm</span> của chúng tôi</h3>
+                    <p>
+                        Những thực phẩm hữu cơ 100%
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-lg-4 col-md-6 text-center">
-        <div class="single-product-item">
-          <div class="product-image">
-            <a href="shop/1"><img
-                src="https://i.imgur.com/QVkdWDf.jpg"
-                alt=""
-              /></a>
-          </div>
-          <h3>Dâu tây</h3>
-          <p class="product-price"><span>Một Ký</span> 230.000 VNĐ</p>
-          <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
-            Thêm vào Giỏ Hàng</a>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 text-center">
+                <div class="single-product-item">
+                    <div class="product-image">
+                        <a href="shop/1"><img
+                                src="https://i.imgur.com/QVkdWDf.jpg"
+                                alt=""
+                        /></a>
+                    </div>
+                    <h3>Dâu tây</h3>
+                    <p class="product-price"><span>Một Ký</span> 230.000 VNĐ</p>
+                    <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+                        Thêm vào Giỏ Hàng</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 text-center">
+                <div class="single-product-item">
+                    <div class="product-image">
+                        <a href="shop/1"><img
+                                src="https://i.imgur.com/HU2Lf46.jpg"
+                                alt=""
+                        /></a>
+                    </div>
+                    <h3>Nho</h3>
+                    <p class="product-price"><span>Một Ký</span> 190.000 VNĐ</p>
+                    <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+                        Thêm vào Giỏ Hàng</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
+                <div class="single-product-item">
+                    <div class="product-image">
+                        <a href="shop/1"><img
+                                src="https://i.imgur.com/YhvZ7bg.jpg"
+                                alt=""
+                        /></a>
+                    </div>
+                    <h3>Chanh Mỹ</h3>
+                    <p class="product-price"><span>Một Ký</span> 150.000 VNĐ</p>
+                    <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+                        Thêm vào Giỏ Hàng</a>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-lg-4 col-md-6 text-center">
-        <div class="single-product-item">
-          <div class="product-image">
-            <a href="shop/1"><img
-                src="https://i.imgur.com/HU2Lf46.jpg"
-                alt=""
-              /></a>
-          </div>
-          <h3>Nho</h3>
-          <p class="product-price"><span>Một Ký</span> 190.000 VNĐ</p>
-          <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
-            Thêm vào Giỏ Hàng</a>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
-        <div class="single-product-item">
-          <div class="product-image">
-            <a href="shop/1"><img
-                src="https://i.imgur.com/YhvZ7bg.jpg"
-                alt=""
-              /></a>
-          </div>
-          <h3>Chanh Mỹ</h3>
-          <p class="product-price"><span>Một Ký</span> 150.000 VNĐ</p>
-          <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
-            Thêm vào Giỏ Hàng</a>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
 <!-- end product section -->
 
 <!-- cart banner section -->
 <section class="cart-banner pt-100 pb-100">
-  <div class="container">
-    <div class="row clearfix">
-      <!--Image Column-->
-      <div class="image-column col-lg-6">
-        <div class="image">
-          <div class="price-box">
-            <div class="inner-price">
+    <div class="container">
+        <div class="row clearfix">
+            <!--Image Column-->
+            <div class="image-column col-lg-6">
+                <div class="image">
+                    <div class="price-box">
+                        <div class="inner-price">
               <span class="price">
                 <strong>30%</strong>
-                <br />
+                <br/>
                 mỗi ký
               </span>
+                        </div>
+                    </div>
+                    <img src="https://i.imgur.com/rAweAwK.jpg" alt=""/>
+                </div>
             </div>
-          </div>
-          <img src="https://i.imgur.com/rAweAwK.jpg" alt="" />
+            <!--Content Column-->
+            <div class="content-column col-lg-6">
+                <h3><span class="orange-text">Ưu đãi</span> của tháng</h3>
+                <h4>Dâu tây</h4>
+                <div class="text">
+                    Quisquam minus maiores repudiandae nobis, minima saepe id, fugit ullam
+                    similique! Beatae, minima quisquam molestias facere ea. Perspiciatis
+                    unde omnis iste natus error sit voluptatem accusant
+                </div>
+                <!--Countdown Timer-->
+                <div class="time-counter">
+                    <div class="time-countdown clearfix" data-countdown="2022/6/15">
+                        <div class="counter-column">
+                            <div class="inner"><span class="count">00</span>Ngày</div>
+                        </div>
+                        <div class="counter-column">
+                            <div class="inner"><span class="count">00</span>Giờ</div>
+                        </div>
+                        <div class="counter-column">
+                            <div class="inner"><span class="count">00</span>Phút</div>
+                        </div>
+                        <div class="counter-column">
+                            <div class="inner"><span class="count">00</span>Giây</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="cart" class="cart-btn mt-3"><i
+                        class="fas fa-shopping-cart"
+                ></i>
+                    Add to Cart</a>
+            </div>
         </div>
-      </div>
-      <!--Content Column-->
-      <div class="content-column col-lg-6">
-        <h3><span class="orange-text">Ưu đãi</span> của tháng</h3>
-        <h4>Dâu tây</h4>
-        <div class="text">
-          Quisquam minus maiores repudiandae nobis, minima saepe id, fugit ullam
-          similique! Beatae, minima quisquam molestias facere ea. Perspiciatis
-          unde omnis iste natus error sit voluptatem accusant
-        </div>
-        <!--Countdown Timer-->
-        <div class="time-counter">
-          <div class="time-countdown clearfix" data-countdown="2022/6/15">
-            <div class="counter-column">
-              <div class="inner"><span class="count">00</span>Ngày</div>
-            </div>
-            <div class="counter-column">
-              <div class="inner"><span class="count">00</span>Giờ</div>
-            </div>
-            <div class="counter-column">
-              <div class="inner"><span class="count">00</span>Phút</div>
-            </div>
-            <div class="counter-column">
-              <div class="inner"><span class="count">00</span>Giây</div>
-            </div>
-          </div>
-        </div>
-        <a href="cart" class="cart-btn mt-3"><i
-            class="fas fa-shopping-cart"
-          ></i>
-          Add to Cart</a>
-      </div>
     </div>
-  </div>
 </section>
 <!-- end cart banner section -->
 
 <!-- testimonail-section -->
 <div class="testimonail-section mt-150 mb-150">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-10 offset-lg-1 text-center">
-        <div class="testimonial-sliders">
-          <div class="single-testimonial-slider">
-            <div class="client-avater">
-              <img src="https://i.imgur.com/G1FKk2o.jpg" alt="" />
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1 text-center">
+                <div class="testimonial-sliders">
+                    <div class="single-testimonial-slider">
+                        <div class="client-avater">
+                            <img src="https://i.imgur.com/G1FKk2o.jpg" alt=""/>
+                        </div>
+                        <div class="client-meta">
+                            <h3>Hồ Vạn Đạt <span>19127352</span></h3>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-slider">
+                        <div class="client-avater">
+                            <img src="https://i.imgur.com/bzZheCc.jpg" alt=""/>
+                        </div>
+                        <div class="client-meta">
+                            <h3>Bùi Phú Thịnh <span>19127558</span></h3>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="client-meta">
-              <h3>Hồ Vạn Đạt <span>19127352</span></h3>
-            </div>
-          </div>
-          <div class="single-testimonial-slider">
-            <div class="client-avater">
-              <img src="https://i.imgur.com/bzZheCc.jpg" alt="" />
-            </div>
-            <div class="client-meta">
-              <h3>Bùi Phú Thịnh <span>19127558</span></h3>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 <!-- end testimonail-section -->
 
 <!-- shop banner -->
 <section class="shop-banner">
-  <div class="container">
-    <h3>
-      Siêu
-      <span class="orange-text">Ưu Đãi</span>
-      của tháng
-      <br />
-      đang diễn ra!
-    </h3>
-    <div class="sale-percent">
+    <div class="container">
+        <h3>
+            Siêu
+            <span class="orange-text">Ưu Đãi</span>
+            của tháng
+            <br/>
+            đang diễn ra!
+        </h3>
+        <div class="sale-percent">
       <span>Giảm
-        <br />
+        <br/>
         Đến</span>30%
+        </div>
+        <a href="/shop" class="cart-btn btn-lg">Mua Ngay</a>
     </div>
-    <a href="/shop" class="cart-btn btn-lg">Mua Ngay</a>
-  </div>
 </section>
 <!-- end shop banner -->
 
 <!-- latest news -->
 <div class="latest-news pt-150 pb-150">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2 text-center">
-        <div class="section-title">
-          <h3><span class="orange-text">Tin tức</span> của chúng tôi</h3>
-          <p>
-            Tổng hợp những tin tức về các sản phẩm
-          </p>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="section-title">
+                    <h3><span class="orange-text">Tin tức</span> của chúng tôi</h3>
+                    <p>
+                        Tổng hợp những tin tức về các sản phẩm
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-lg-4 col-md-6">
-        <div class="single-latest-news">
-          <a href="single-news"><div class="latest-news-bg news-bg-1"></div></a>
-          <div class="news-text-box">
-            <h3>
-              <a href="single-news">Nho đen midnight Mỹ.</a>
-            </h3>
-            <p class="blog-meta">
-              <span class="author"><i class="fas fa-user"></i> Admin</span>
-              <span class="date"><i class="fas fa-calendar"></i>
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="single-latest-news">
+                    <a href="single-news">
+                        <div class="latest-news-bg news-bg-1"></div>
+                    </a>
+                    <div class="news-text-box">
+                        <h3>
+                            <a href="single-news">Nho đen midnight Mỹ.</a>
+                        </h3>
+                        <p class="blog-meta">
+                            <span class="author"><i class="fas fa-user"></i> Admin</span>
+                            <span class="date"><i class="fas fa-calendar"></i>
                 27 December, 2019</span>
-            </p>
-            <p class="excerpt">
-              Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus
-              nisi. Praesent vitae mattis nunc, egestas viverra eros.
-            </p>
-            <a href="single-news" class="read-more-btn">Đọc tiếp
-              <i class="fas fa-angle-right"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="single-latest-news">
-          <a href="single-news"><div class="latest-news-bg news-bg-2"></div></a>
-          <div class="news-text-box">
-            <h3>
-              <a href="single-news">5 cách ăn cà chua có hại cho sức khỏe cần
-                tránh.</a>
-            </h3>
-            <p class="blog-meta">
-              <span class="author"><i class="fas fa-user"></i> Admin</span>
-              <span class="date"><i class="fas fa-calendar"></i>
+                        </p>
+                        <p class="excerpt">
+                            Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus
+                            nisi. Praesent vitae mattis nunc, egestas viverra eros.
+                        </p>
+                        <a href="single-news" class="read-more-btn">Đọc tiếp
+                            <i class="fas fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-latest-news">
+                    <a href="single-news">
+                        <div class="latest-news-bg news-bg-2"></div>
+                    </a>
+                    <div class="news-text-box">
+                        <h3>
+                            <a href="single-news">5 cách ăn cà chua có hại cho sức khỏe cần
+                                tránh.</a>
+                        </h3>
+                        <p class="blog-meta">
+                            <span class="author"><i class="fas fa-user"></i> Admin</span>
+                            <span class="date"><i class="fas fa-calendar"></i>
                 27 December, 2019</span>
-            </p>
-            <p class="excerpt">
-              Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus
-              nisi. Praesent vitae mattis nunc, egestas viverra eros.
-            </p>
-            <a href="single-news" class="read-more-btn">Đọc Tiếp
-              <i class="fas fa-angle-right"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-        <div class="single-latest-news">
-          <a href="single-news"><div class="latest-news-bg news-bg-3"></div></a>
-          <div class="news-text-box">
-            <h3>
-              <a href="single-news">8 lợi ích đáng ngạc nhiên của quả lựu.</a>
-            </h3>
-            <p class="blog-meta">
-              <span class="author"><i class="fas fa-user"></i> Admin</span>
-              <span class="date"><i class="fas fa-calendar"></i>
+                        </p>
+                        <p class="excerpt">
+                            Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus
+                            nisi. Praesent vitae mattis nunc, egestas viverra eros.
+                        </p>
+                        <a href="single-news" class="read-more-btn">Đọc Tiếp
+                            <i class="fas fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
+                <div class="single-latest-news">
+                    <a href="single-news">
+                        <div class="latest-news-bg news-bg-3"></div>
+                    </a>
+                    <div class="news-text-box">
+                        <h3>
+                            <a href="single-news">8 lợi ích đáng ngạc nhiên của quả lựu.</a>
+                        </h3>
+                        <p class="blog-meta">
+                            <span class="author"><i class="fas fa-user"></i> Admin</span>
+                            <span class="date"><i class="fas fa-calendar"></i>
                 27 December, 2019</span>
-            </p>
-            <p class="excerpt">
-              Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus
-              nisi. Praesent vitae mattis nunc, egestas viverra eros.
-            </p>
-            <a href="single-news" class="read-more-btn">Đọc Tiếp
-              <i class="fas fa-angle-right"></i></a>
-          </div>
+                        </p>
+                        <p class="excerpt">
+                            Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus
+                            nisi. Praesent vitae mattis nunc, egestas viverra eros.
+                        </p>
+                        <a href="single-news" class="read-more-btn">Đọc Tiếp
+                            <i class="fas fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <a href="news" class="boxed-btn">Đọc Thêm</a>
+            </div>
+        </div>
     </div>
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <a href="news" class="boxed-btn">Đọc Thêm</a>
-      </div>
-    </div>
-  </div>
 </div>
 <!-- end latest news -->

@@ -20,8 +20,12 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     category: {
-      type: DataTypes.STRING(45),
-      allowNull: true
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'category',
+        key: 'id'
+      }
     }
   }, {
     sequelize,
@@ -42,6 +46,13 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "id" },
+        ]
+      },
+      {
+        name: "FK_PROD_CATE_idx",
+        using: "BTREE",
+        fields: [
+          { name: "category" },
         ]
       },
     ]

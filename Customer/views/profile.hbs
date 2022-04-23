@@ -1,109 +1,110 @@
 <!-- header -->
 <div class="top-header-area" id="sticker">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 col-sm-12 text-center">
-        <div class="main-menu-wrap">
-          <!-- logo -->
-          <div class="site-logo">
-            <a href="/">
-              <img src="https://i.imgur.com/owygF8v.png" alt="" />
-            </a>
-          </div>
-          <!-- logo -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 text-center">
+                <div class="main-menu-wrap">
+                    <!-- logo -->
+                    <div class="site-logo">
+                        <a href="/">
+                            <img style="max-width: 50%" src="https://i.imgur.com/owygF8v.png" alt=""/>
+                        </a>
+                    </div>
+                    <!-- logo -->
 
-          <!-- menu start -->
-          <nav class="main-menu">
-            <ul>
-              <li>
-                <a href="/">Trang chủ</a>
-              </li>
-              <li>
-                <a href="/shop">Sản phẩm</a>
-              </li>
-              <li>
-                <a href="/news">Tin tức</a>
-              </li>
-              <li class="current-list-item"><a href="/contact">Liên hệ</a></li>
-              <li><a href="/about">Giới thiệu</a></li>
-              <li>
-                <div class="header-icons">
-                  <a class="shopping-cart" href="/cart"><i
-                      class="fas fa-shopping-cart"
+                    <!-- menu start -->
+                    <nav class="main-menu">
+                        <ul>
+                            <li>
+                                <a href="/">Trang chủ</a>
+                            </li>
+                            <li>
+                                <a href="/shop">Sản phẩm</a>
+                            </li>
+                            <li>
+                                <a href="/news">Tin tức</a>
+                            </li>
+                            <li class="current-list-item"><a href="/contact">Liên hệ</a></li>
+                            <li><a href="/about">Giới thiệu</a></li>
+                            <li>
+                                <div class="header-icons">
+                                    <a class="shopping-cart" href="/cart"><i
+                                            class="fas fa-shopping-cart"
+                                    ></i></a>
+                                    {{#if user}}
+                                        <a>chào, {{user.username}}!</a>
+                                        <a class="mobile-hide search-bar-icon" href="/logout"><span
+                                        >Đăng xuất</span></a>{{else}}
+                                        <a class="mobile-hide search-bar-icon" href="/login"><span
+                                        >Đăng nhập</span></a>
+                                    {{/if}}
+
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <a class="mobile-show search-bar-icon" href="#"><i
+                            class="fas fa-search"
                     ></i></a>
-                  {{#if user}}
-                    <a>chào, {{user.username}}!</a>
-                    <a class="mobile-hide search-bar-icon" href="/logout"><span
-                      >Đăng xuất</span></a>{{else}}
-                    <a class="mobile-hide search-bar-icon" href="/login"><span
-                      >Đăng nhập</span></a>
-                  {{/if}}
-
+                    <div class="mobile-menu"></div>
+                    <!-- menu end -->
                 </div>
-              </li>
-            </ul>
-          </nav>
-          <a class="mobile-show search-bar-icon" href="#"><i
-              class="fas fa-search"
-            ></i></a>
-          <div class="mobile-menu"></div>
-          <!-- menu end -->
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 <!-- end header -->
 
 <!-- breadcrumb-section -->
 <div class="breadcrumb-section breadcrumb-bg">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2 text-center">
-        <div class="breadcrumb-text">
-          <p>thành viên</p>
-          <h1>Hồ Sơ</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <p>thành viên</p>
+                    <h1>Hồ Sơ</h1>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 <!-- end breadcrumb section -->
 
 <div
-  class="card mx-auto shadow p-3 mb-5 bg-white rounded"
-  style="width: 18rem; margin: 2rem 0;"
+        class="card mx-auto shadow p-3 mb-5 bg-white rounded"
+        style="width: 18rem; margin: 2rem 0;"
 >
-  <img
-    class="card-img-top rounded mx-auto d-block"
-    src="{{user.avt}}"
-    alt="Card image cap"
-  />
-  {{!-- {{#if user.avatar}}
-  {{else}}
     <img
-      class="card-img-top mx-auto"
-      src="https://cdn-icons-png.flaticon.com/512/1/1247.png"
-      alt="Card image cap"
+            class="card-img-top rounded mx-auto d-block"
+            src="{{user.avt}}"
+            alt="Card image cap"
     />
-  {{/if}} --}}
-  <div class="card-body">
-    <h5 class="card-title text-center">{{user.username}}</h5>
-    <form method="post">
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Enter your avatar link"
-          name="avtUrl"
-        />
-      </div>
-      <button
-        type="submit"
-        name="username"
-        class="btn btn-primary"
-        value="{{user.username}}"
-      >Submit</button>
-    </form>
-  </div>
+    {{!-- {{#if user.avatar}}
+    {{else}}
+      <img
+        class="card-img-top mx-auto"
+        src="https://cdn-icons-png.flaticon.com/512/1/1247.png"
+        alt="Card image cap"
+      />
+    {{/if}} --}}
+    <div class="card-body">
+        <h5 class="card-title text-center">{{user.username}}</h5>
+        <form method="post">
+            <div class="form-group">
+                <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your avatar link"
+                        name="avtUrl"
+                />
+            </div>
+            <button
+                    type="submit"
+                    name="username"
+                    class="btn btn-primary"
+                    value="{{user.username}}"
+            >Submit
+            </button>
+        </form>
+    </div>
 </div>
