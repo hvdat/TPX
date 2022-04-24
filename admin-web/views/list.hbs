@@ -98,6 +98,7 @@
     <div class="clearfix"></div>
     {{#if user}}
     <div class="content-wrapper">
+        {{!--
         <div class="container-fluid">
 
             <div class="row mt-3">
@@ -136,13 +137,21 @@
 
 
                 <!--start overlay-->
-                <div class="overlay toggle-menu"></div>
+                <div class="overlay toggle-menu" id=""></div>
                 <!--end overlay-->
+
 
             </div>
             <!-- End container-fluid-->
 
         </div>
+        --}}
+    <!-- products -->
+        <div class="container-fluid"id="context">
+
+        </div>
+    <!-- end products -->
+
         <!--End content-wrapper-->
         
         <!--Pagination -->
@@ -150,16 +159,17 @@
           <div class="col-lg-12 text-center">
             <div class="pagination-wrap">
               <ul>
-                <li><a href="/list?page={{prevPage}}">Prev</a></li>
+                <li><a onclick="prevPage()">Prev</a></li>
                 {{#pages}}
-                  <li><a href="/list?page={{.}}">{{.}}</a></li>
+                    <li><a onclick="loadPage({{.}})">{{.}}</a></li>
                 {{/pages}}
-                <li><a href="/list?page={{nextPage}}">Next</a></li>
+                <li><a onclick="nextPage()">Next</a></li>
               </ul>
             </div>
           </div>
         </div>
         <!--End Pagination -->
+    </div>
         {{else}}
         <h1 class="content-wrapper">WARNING: UNAUTHORIZED ACCESS!<br> Please <a href="/login"
                 style="color:crimson;"><strong>LOGIN</strong></a> to use this function!</h1>
@@ -215,5 +225,215 @@
         <!--end color switcher-->
 
     </div>
+</div>
     <!--End wrapper-->
+
+{{!--
+{{#section "script"}}
+
+    <script type="application/javascript">
+        $('.content-wrapper');//.css('height', '980px');
+        loadPage(1);
+        var currPage = 1;
+        var limit = 0;
+        function loadPage(page) {
+            currPage = page;
+            $.ajax({
+                url: 'list/api/' + page,
+                type: 'GET'
+            }).then(data => {
+                        $('#context').html(data);
+                        $('#context').fadeOut("fast");
+                        const products = data.products;
+                        console.log(products);
+                        limit = limit > products.length ? limit : products.length;
+                        for (let i = 0; i < products.length; i++) {
+                            const p = products[i];
+                            const items = $(`
+            <div class="row mt-3">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Danh Sách Sản Phẩm</h5>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Description</th>
+                                            <th scope="col">Image URL</th>
+                                            <th scope="col">Category</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>${p.name}</td>
+                                            <td>${p.price}</td>
+                                            <td>${p.desc}</td>
+                                            <td>${p.img}</td>
+                                            <td>${p.category}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End Row-->
+
+
+                <!--start overlay-->
+                <div class="overlay toggle-menu"></div>
+                <!--end overlay-->
+            </div>
+                            `);
+                            setTimeout(function () {
+                                $('#context').append(items);
+
+                            }, 200);
+                            $('#context').fadeIn("slow");
+
+                        }
+                    })
+        }
+
+        function nextPage() {
+            if (currPage + 1 > limit) {
+                currPage = limit;
+            } else {
+                currPage++;
+            }
+            let page = currPage;
+            console.log("🚀 ~ file: list.hbs ~ line 205 ~ nextPage ~ page", page)
+            $.ajax({
+                url: 'list/api/' + page,
+                type: 'GET'
+            })
+                    .then(data => {
+                        $('#context').html(data);
+                        $('#context').fadeOut("fast");
+                        const products = data.products;
+                        for (let i = 0; i < products.length; i++) {
+                            const p = products[i];
+                            const items = $(`
+            <div class="row mt-3">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Danh Sách Sản Phẩm</h5>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Description</th>
+                                            <th scope="col">Image URL</th>
+                                            <th scope="col">Category</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>${p.name}</td>
+                                            <td>${p.price}</td>
+                                            <td>${p.desc}</td>
+                                            <td>${p.img}</td>
+                                            <td>${p.category}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End Row-->
+
+
+                <!--start overlay-->
+                <div class="overlay toggle-menu"></div>
+                <!--end overlay-->
+            </div>
+                        `);
+                            setTimeout(function () {
+                                $('#context').append(items);
+
+                            }, 200);
+                            $('#context').fadeIn("slow");
+                        }
+                    })
+        }
+
+        function prevPage() {
+            if (currPage - 1 <= 0) {
+                currPage = 1;
+            } else {
+                currPage--;
+            }
+            let page = currPage;
+            console.log("🚀 ~ file: list.hbs ~ line 241 ~ prevPage ~ page", page)
+            $.ajax({
+                url: 'list/api/' + page,
+                type: 'GET'
+            })
+                    .then(data => {
+                        $('#context').html(data);
+                        $('#context').fadeOut("fast");
+                        const products = data.products;
+                        for (let i = 0; i < products.length; i++) {
+                            const p = products[i];
+                            const items = $(`
+            <div class="row mt-3">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Danh Sách Sản Phẩm</h5>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Description</th>
+                                            <th scope="col">Image URL</th>
+                                            <th scope="col">Category</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>${p.name}</td>
+                                            <td>${p.price}</td>
+                                            <td>${p.desc}</td>
+                                            <td>${p.img}</td>
+                                            <td>${p.category}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End Row-->
+
+
+                <!--start overlay-->
+                <div class="overlay toggle-menu"></div>
+                <!--end overlay-->
+            </div>
+
+                        `);
+                            setTimeout(function () {
+                                $('#context').append(items);
+
+                            }, 200);
+                            $('#context').fadeIn("slow");
+                        }
+                    })
+        }
+    </script>
+
+{{/section}}
+
+--}}
+
     
