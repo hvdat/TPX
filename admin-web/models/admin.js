@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     username: {
       type: DataTypes.STRING(256),
       allowNull: true,
-      unique: "admin_name_UNIQUE"
+      unique: "username_UNIQUE"
     },
     password: {
       type: DataTypes.STRING(120),
@@ -20,6 +20,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(256),
       allowNull: true,
       unique: "email_UNIQUE"
+    },
+    tel: {
+      type: DataTypes.STRING(10),
+      allowNull: true,
+      unique: "tel_UNIQUE"
     }
   }, {
     sequelize,
@@ -43,6 +48,14 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
+        name: "username_UNIQUE",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "username" },
+        ]
+      },
+      {
         name: "email_UNIQUE",
         unique: true,
         using: "BTREE",
@@ -51,11 +64,11 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "admin_name_UNIQUE",
+        name: "tel_UNIQUE",
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "username" },
+          { name: "tel" },
         ]
       },
     ]

@@ -38,19 +38,6 @@
                     <i class="zmdi zmdi-grid"></i> <span>Products List</span>
                 </a>
             </li>
-
-            <li>
-                <a href="/login" target="_blank">
-                    <i class="zmdi zmdi-lock"></i> <span>Login</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="/signup" target="_blank">
-                    <i class="zmdi zmdi-account-circle"></i> <span>Registration</span>
-                </a>
-            </li>
-
         </ul>
 
     </div>
@@ -76,17 +63,17 @@
             <ul class="navbar-nav align-items-center right-nav-link">
                 <li class="nav-item dropdown-lg">
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown"
-                       href="javascript:void();">
+                        href="javascript:void();">
                         <i class="fa fa-envelope-open-o"></i></a>
                 </li>
                 <li class="nav-item dropdown-lg">
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown"
-                       href="javascript:void();">
+                        href="javascript:void();">
                         <i class="fa fa-bell-o"></i></a>
                 </li>
                 <li class="nav-item language">
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown"
-                       href="javascript:void();"><i class="fa fa-flag"></i></a>
+                        href="javascript:void();"><i class="fa fa-flag"></i></a>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li class="dropdown-item"><i class="flag-icon flag-icon-gb mr-2"></i> English</li>
                         <li class="dropdown-item"><i class="flag-icon flag-icon-fr mr-2"></i> French</li>
@@ -94,34 +81,13 @@
                         <li class="dropdown-item"><i class="flag-icon flag-icon-de mr-2"></i> German</li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
-                        <span class="user-profile"><img src="https://via.placeholder.com/110x110" class="img-circle"
-                                                        alt="user avatar"></span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li class="dropdown-item user-details">
-                            <a href="javaScript:void();">
-                                <div class="media">
-                                    <div class="avatar"><img class="align-self-start mr-3"
-                                                             src="https://via.placeholder.com/110x110"
-                                                             alt="user avatar"></div>
-                                    <div class="media-body">
-                                        <h6 class="mt-2 user-title">Sarajhon Mccoy</h6>
-                                        <p class="user-subtitle">mccoy@example.com</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-item"><i class="icon-envelope mr-2"></i> Inbox</li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-item"><i class="icon-wallet mr-2"></i> Account</li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-item"><i class="icon-settings mr-2"></i> Setting</li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-item"><i class="icon-power mr-2"></i> Logout</li>
-                    </ul>
+                <li class="nav-item dropdown-lg">
+                    {{#if user}}
+                    <span class="mt-2 user-title">chào, {{user.username}}</span>
+                    <h6 class="mt-2 user-title"><a href="/logout">Logout</a> </h6>
+                    {{else}}
+                    <h6 class="mt-2 user-title"><a href="/login">Login</a></h6>
+                    {{/if}}
                 </li>
             </ul>
         </nav>
@@ -141,38 +107,39 @@
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Mặt Hàng</th>
-                                        <th scope="col">Số Lượng (KG)</th>
-                                        <th scope="col">Thành Tiền (đ)</th>
-                                    </tr>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Mặt Hàng</th>
+                                            <th scope="col">Số Lượng (KG)</th>
+                                            <th scope="col">Thành Tiền (đ)</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Táo</td>
-                                        <td>2</td>
-                                        <td>50.000</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Lê</td>
-                                        <td>1</td>
-                                        <td>15.000</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Nho Mỹ</td>
-                                        <td>3</td>
-                                        <td>150.000</td>
-                                    </tr>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Táo</td>
+                                            <td>2</td>
+                                            <td>50.000</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Lê</td>
+                                            <td>1</td>
+                                            <td>15.000</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Nho Mỹ</td>
+                                            <td>3</td>
+                                            <td>150.000</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                </div><!--End Row-->
+                </div>
+                <!--End Row-->
 
                 <div class="col-lg-6">
                     <div class="card">
@@ -181,38 +148,39 @@
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Mặt Hàng</th>
-                                        <th scope="col">Số Lượng (KG)</th>
-                                        <th scope="col">thành tiền (đ)</th>
-                                    </tr>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Mặt Hàng</th>
+                                            <th scope="col">Số Lượng (KG)</th>
+                                            <th scope="col">thành tiền (đ)</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Đào</td>
-                                        <td>2</td>
-                                        <td>70.000</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Dâu Tây</td>
-                                        <td>2</td>
-                                        <td>100.000</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Nho Mỹ</td>
-                                        <td>5</td>
-                                        <td>250.000</td>
-                                    </tr>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Đào</td>
+                                            <td>2</td>
+                                            <td>70.000</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Dâu Tây</td>
+                                            <td>2</td>
+                                            <td>100.000</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Nho Mỹ</td>
+                                            <td>5</td>
+                                            <td>250.000</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                </div><!--End Row-->
+                </div>
+                <!--End Row-->
 
                 <!--start overlay-->
                 <div class="overlay toggle-menu"></div>
@@ -221,7 +189,8 @@
             </div>
             <!-- End container-fluid-->
 
-        </div><!--End content-wrapper-->
+        </div>
+        <!--End content-wrapper-->
         <!--Start Back To Top Button-->
         <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
         <!--End Back To Top Button-->
@@ -274,4 +243,5 @@
         </div>
         <!--end color switcher-->
 
-    </div><!--End wrapper-->
+    </div>
+    <!--End wrapper-->
