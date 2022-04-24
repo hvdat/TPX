@@ -87,49 +87,23 @@
                             <th class="product-total">Total</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr class="table-body-row">
-                            <td class="product-remove">
-                                <a href="#"><i class="far fa-window-close"></i></a>
-                            </td>
-                            <td class="product-image">
-                                <img src="/img/products/product-img-1.jpg" alt=""/>
-                            </td>
-                            <td class="product-name">Strawberry</td>
-                            <td class="product-price">$85</td>
-                            <td class="product-quantity">
-                                <input type="number" placeholder="0"/>
-                            </td>
-                            <td class="product-total">1</td>
-                        </tr>
-                        <tr class="table-body-row">
-                            <td class="product-remove">
-                                <a href="#"><i class="far fa-window-close"></i></a>
-                            </td>
-                            <td class="product-image">
-                                <img src="/img/products/product-img-2.jpg" alt=""/>
-                            </td>
-                            <td class="product-name">Berry</td>
-                            <td class="product-price">$70</td>
-                            <td class="product-quantity">
-                                <input type="number" placeholder="0"/>
-                            </td>
-                            <td class="product-total">1</td>
-                        </tr>
-                        <tr class="table-body-row">
-                            <td class="product-remove">
-                                <a href="#"><i class="far fa-window-close"></i></a>
-                            </td>
-                            <td class="product-image">
-                                <img src="/img/products/product-img-3.jpg" alt=""/>
-                            </td>
-                            <td class="product-name">Lemon</td>
-                            <td class="product-price">$35</td>
-                            <td class="product-quantity">
-                                <input type="number" placeholder="0"/>
-                            </td>
-                            <td class="product-total">1</td>
-                        </tr>
+                        <tbody id="context">
+                        {{#each cart}}
+                            <tr class="table-body-row">
+                                <td class="product-remove">
+                                    <a onclick="deleteItem({{@index}})"><i class="far fa-window-close"></i></a>
+                                </td>
+                                <td class="product-image">
+                                    <img src={{img}} alt=""/>
+                                </td>
+                                <td class="product-name">{{name}}</td>
+                                <td class="product-price">{{price}}</td>
+                                <td class="product-quantity">
+                                    <input type="number" placeholder="0"/>
+                                </td>
+                                <td class="product-total">{{total}}</td>
+                            </tr>
+                        {{/each}}
                         </tbody>
                     </table>
                 </div>
@@ -179,3 +153,46 @@
     </div>
 </div>
 <!-- end cart -->
+
+{{#section "script"}}
+
+    <script type="application/javascript">
+
+        function deleteItem(idx) {
+            $.ajax({
+                url: '/shop/api/cart/list',
+                type: 'GET',
+                success: function (data) {
+                    let cart = data.cart;
+
+                    cart.splice(idx, 1);
+                    console.log(cart[idx].name);
+
+                    $('#context').html(data);
+                    for (let i = 0; i < cart.length; i++) {
+                        let p = cart[i];
+                        $('#context').append(`
+                            <tr class="table-body-row">
+                                <td class="product-remove">
+                                    <a onclick="deleteItem()"><i class="far fa-window-close"></i></a>
+                                </td>
+                                <td class="product-image">
+                                    <img src=${p.img} alt=""/>
+                                </td>
+                                <td class="product-name">${p.name}</td>
+                                <td class="product-price">${p.price}</td>
+                                <td class="product-quantity">
+                                    <input type="number" placeholder="0"/>
+                                </td>
+                                <td class="product-total">${p.total}</td>
+                            </tr>
+                        `);
+                    }
+
+                }
+            });
+        }
+
+    </script>
+
+{{/section}}

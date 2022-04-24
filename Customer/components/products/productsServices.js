@@ -21,3 +21,12 @@ exports.categoryName = async () => {
         attributes: ['id', 'name']
     });
 };
+
+exports.singleProduct = async (id) => {
+    return await products.findOne({
+        raw: true,
+        where: {
+            id: id
+        }
+    });
+};

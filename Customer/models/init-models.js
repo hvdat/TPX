@@ -1,18 +1,28 @@
 var DataTypes = require("sequelize").DataTypes;
 var _category = require("./category");
+var _order = require("./order");
+var _order_detail = require("./order_detail");
 var _products = require("./products");
 var _users = require("./users");
 
 function initModels(sequelize) {
   var category = _category(sequelize, DataTypes);
+  var order = _order(sequelize, DataTypes);
+  var order_detail = _order_detail(sequelize, DataTypes);
   var products = _products(sequelize, DataTypes);
   var users = _users(sequelize, DataTypes);
 
   products.belongsTo(category, { as: "category_category", foreignKey: "category"});
   category.hasMany(products, { as: "products", foreignKey: "category"});
+  order_detail.belongsTo(order, { as: "order", foreignKey: "order_id"});
+  order.hasMany(order_detail, { as: "order_details", foreignKey: "order_id"});
+  order_detail.belongsTo(products, { as: "product", foreignKey: "products_id"});
+  products.hasMany(order_detail, { as: "order_details", foreignKey: "products_id"});
 
   return {
     category,
+    order,
+    order_detail,
     products,
     users,
   };

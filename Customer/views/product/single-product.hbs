@@ -55,53 +55,52 @@
 </div>
 <!-- end header -->
 <!-- breadcrumb-section -->
-<div class="breadcrumb-section breadcrumb-bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2 text-center">
-                <div class="breadcrumb-text">
-                    <p>Chi Tiết Sản Phẩm</p>
-                    <h1>{{name}}</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end breadcrumb section -->
-
-<!-- single product -->
-<div class="single-product mt-150 mb-150">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-5">
-                <div class="single-product-img">
-                    <img src="https://i.imgur.com/Rf5ZzOI.jpg" alt=""/>
-                </div>
-            </div>
-            <div class="col-md-7">
-                <div class="single-product-content">
-                    <h3>Táo xanh</h3>
-                    <p class="single-product-pricing"><span>Một Ký</span> 90.000 VNĐ</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta
-                        sint dignissimos, rem commodi cum voluptatem quae reprehenderit
-                        repudiandae ea tempora incidunt ipsa, quisquam animi perferendis eos
-                        eum modi! Tempora, earum.</p>
-                    <div class="single-product-form">
-                        <form action="index">
-                            <input type="number" placeholder="0"/>
-                        </form>
-                        <a href="/cart" class="cart-btn"><i
-                                class="fas fa-shopping-cart"
-                        ></i>
-                            Thêm vào Giỏ Hàng</a>
-                        <p><strong>Danh mục: </strong>Trái cây, Hữu cơ</p>
+{{#product}}
+    <div class="breadcrumb-section breadcrumb-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <div class="breadcrumb-text">
+                        <p>Chi Tiết Sản Phẩm</p>
+                        <h1>{{name}}</h1>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- end single product -->
+    <!-- end breadcrumb section -->
+
+    <!-- single product -->
+    <div class="single-product mt-150 mb-150">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="single-product-img">
+                        <img src="{{img}}" alt=""/>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="single-product-content">
+                        <h3>{{name}}</h3>
+                        <p class="single-product-pricing"><span>Một Ký</span> {{price}} VNĐ</p>
+                        <p>{{desc}}</p>
+                        <div class="single-product-form">
+                            <form action="index">
+                                <input type="number" placeholder="0"/>
+                            </form>
+                            <a href="/cart" class="cart-btn"><i
+                                    class="fas fa-shopping-cart"
+                            ></i>
+                                Thêm vào Giỏ Hàng</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end single product -->
+{{/product}}
 
 <!-- more products -->
 <div class="more-products mb-150">

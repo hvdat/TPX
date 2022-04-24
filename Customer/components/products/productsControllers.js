@@ -1,4 +1,4 @@
-const {list} = require("./productsServices");
+const {list, singleProduct} = require("./productsServices");
 const {categoryProductList} = require("./productsServices");
 const {categoryName} = require("./productsServices");
 
@@ -25,8 +25,11 @@ exports.list = async (req, res, next) => {
         },
     );
 };
-exports.details = async (req, res, next) => {
-    res.render("product/single-product");
+exports.details = async (req, res) => {
+    const id = req.params.productID;
+    const product = await singleProduct(id);
+    console.log(product);
+    res.render("product/single-product", {product});
 };
 
 exports.apiList = async (req, res) => {
@@ -61,5 +64,35 @@ exports.apiCategory = async (req, res) => {
         products,
         count,
         pages: Array.from(Array(totalPages).keys()).map((i) => i + 1), // [1, 2, 3, 4, 5]
+    });
+};
+
+exports.addToCart = async (req, res) => {
+    const id = req.params.productID;
+    const product = await singleProduct(id);
+
+    product.quantity = 1;
+    product.total = product.price;
+
+    let cart = req.session.cart;
+    const findItem = cart.find((item) => {
+        if (item.id === product.id) {
+            item.quantity++;
+            item.total = item.quantity * item.price;
+            return true;
+        }
+    });
+    if (findItem === undefined) {
+        cart.push(product);
+    }
+    res.json({
+        cart: req.session.cart,
+        success: true,
+    });
+};
+
+exports.cartList = async (req, res) => {
+    res.json({
+        cart: req.session.cart,
     });
 };

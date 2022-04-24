@@ -28,9 +28,16 @@
                             <li><a href="/about">Giới thiệu</a></li>
                             <li>
                                 <div class="header-icons">
-                                    <a class="shopping-cart" href="/cart"><i
-                                            class="fas fa-shopping-cart"
-                                    ></i></a>
+                                <a class="shopping-cart" href="/cart"><i
+                                        class="fas fa-shopping-cart"
+                                ></i>
+                                    {{#if cart.length}}
+                                        <span class='badge badge-warning cart-count'
+                                              id='lblCartCount'> {{cart.length}} </span></a>
+                                    {{else}}
+                                        <span class='badge badge-warning cart-count'
+                                              id='lblCartCount'> 0 </span></a>
+                                    {{/if}}
                                     {{#if user}}
                                         <a>chào, {{user.username}}!</a>
                                         <a class="mobile-hide search-bar-icon" href="/logout"><span
@@ -164,7 +171,6 @@
     <script type="application/javascript">
         $('.product-section').css('height', '980px');
         loadPage(1);
-        // loadCategory(1);
         var currPage = 1;
         var limit = 0;
 
@@ -191,7 +197,8 @@
                                         </div>
                                         <h3>${p.name}</h3>
                                         <p class="product-price"><span>Một Ký</span> ${p.price} VNĐ</p>
-                                        <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+                                        <a onclick="addToCart(${p.id})" class="cart-btn">
+                                            <i class="fas fa-shopping-cart"></i>
                                             Thêm vào Giỏ Hàng</a>
                                     </div>
                                 </div>
@@ -225,18 +232,18 @@
                         for (let i = 0; i < products.length; i++) {
                             const p = products[i];
                             const items = $(`
-            <div class="col-lg-4 col-md-6 text-center strawberry">
-            <div class="shop/1-item">
-            <div class="product-image">
-              <a href="./shop/${p.id}"><img src=${p.img} alt="" /></a>
-            </div>
-            <h3>${p.name}</h3>
-            <p class="product-price"><span>Một Ký</span> ${p.price} VNĐ</p>
-            <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
-              Thêm vào Giỏ Hàng</a>
-            </div>
-            </div>
-        `);
+                            <div class="col-lg-4 col-md-6 text-center strawberry">
+                            <div class="shop/1-item">
+                            <div class="product-image">
+                              <a href="./shop/${p.id}"><img src=${p.img} alt="" /></a>
+                            </div>
+                            <h3>${p.name}</h3>
+                            <p class="product-price"><span>Một Ký</span> ${p.price} VNĐ</p>
+                            <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+                              Thêm vào Giỏ Hàng</a>
+                            </div>
+                            </div>
+                        `);
                             setTimeout(function () {
                                 $('#context').append(items);
 
@@ -265,18 +272,18 @@
                         for (let i = 0; i < products.length; i++) {
                             const p = products[i];
                             const items = $(`
-            <div class="col-lg-4 col-md-6 text-center strawberry">
-            <div class="shop/1-item">
-            <div class="product-image">
-              <a href="./shop/${p.id}"><img src=${p.img} alt="" /></a>
-            </div>
-            <h3>${p.name}</h3>
-            <p class="product-price"><span>Một Ký</span> ${p.price} VNĐ</p>
-            <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
-              Thêm vào Giỏ Hàng</a>
-            </div>
-            </div>
-        `);
+                            <div class="col-lg-4 col-md-6 text-center strawberry">
+                            <div class="shop/1-item">
+                            <div class="product-image">
+                              <a href="./shop/${p.id}"><img src=${p.img} alt="" /></a>
+                            </div>
+                            <h3>${p.name}</h3>
+                            <p class="product-price"><span>Một Ký</span> ${p.price} VNĐ</p>
+                            <a href="cart" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+                              Thêm vào Giỏ Hàng</a>
+                            </div>
+                            </div>
+                        `);
                             setTimeout(function () {
                                 $('#context').append(items);
 
@@ -318,6 +325,18 @@
                             }, 200);
                             $('#context').fadeIn("slow");
                         }
+                    })
+        }
+
+        function addToCart(productID) {
+            $.ajax({
+                url: 'shop/api/add/' + productID,
+                type: 'GET'
+            })
+                    .then(data => {
+                        if (data.success)
+                            console.log(data.cart);
+                        document.getElementsByClassName('cart-count')[0].innerHTML = data.cart.length;
                     })
         }
     </script>
