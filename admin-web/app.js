@@ -9,9 +9,9 @@ const passport = require("./components/authentication/passport");
 var indexRouter = require("./routes/index");
 var authenticationRouter = require("./components/authentication");
 var orderlistRouter = require("./routes/orderlist");
-var postRouter = require("./components/post_product/index");
+var postRouter = require("./components/post_product");
 var signupRouter = require("./routes/signup");
-var listRouter = require("./routes/list");
+var listRouter = require("./components/list_product");
 
 var app = express();
 
