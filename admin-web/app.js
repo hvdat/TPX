@@ -9,7 +9,7 @@ const passport = require("./components/authentication/passport");
 var indexRouter = require("./routes/index");
 var authenticationRouter = require("./components/authentication");
 var orderlistRouter = require("./routes/orderlist");
-var postRouter = require("./routes/post");
+var postRouter = require("./components/post_product/index");
 var signupRouter = require("./routes/signup");
 var listRouter = require("./routes/list");
 
@@ -46,33 +46,7 @@ app.use("/post", postRouter);
 app.use("/signup", signupRouter);
 app.use("/list", listRouter);
 app.use("/insert", indexRouter);
-// post
-const { db } = require("./models");
-app.post("/insert", function (req, res) {
-  const name = req.body.name;
-  const price = req.body.price;
-  const desc = req.body.desc;
-  const img_url = req.body.img_url;
 
-  // console.log(name);
-  // console.log(price);
-  // console.log(desc);
-  // console.log(img_url);
-
-  const data = {
-    name: name,
-    price: price,
-    desc: desc,
-    img_url: img_url,
-  };
-  db()
-    .collection("fruit")
-    .insertOne(data, function (err, collection) {
-      if (err) throw err;
-      console.log("Record inserted Successfully");
-    });
-  return res.redirect("./post");
-});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
