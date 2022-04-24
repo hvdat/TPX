@@ -216,4 +216,46 @@
 
     </div>
     <!--End wrapper-->
+{{#section "script"}}
+
+    <script type="application/javascript">
+
+        function deleteItem(idx) {
+            $.ajax({
+                url: '/api/list/',
+                type: 'GET',
+                success: function (data) {
+                    let list = data.list;
+
+                    list.splice(idx, 1);
+                    console.log(list[idx].name);
+
+                    $('#context').html(data);
+                    for (let i = 0; i < list.length; i++) {
+                        let p = list[i];
+                        $('#context').append(`
+                            <tr class="table-body-row">
+                                <td class="product-remove">
+                                    <a onclick="deleteItem()"><i class="far fa-window-close"></i></a>
+                                </td>
+                                <td class="product-image">
+                                    <img src=${p.img} alt=""/>
+                                </td>
+                                <td class="product-name">${p.name}</td>
+                                <td class="product-price">${p.price}</td>
+                                <td class="product-quantity">
+                                    <input type="number" placeholder="0"/>
+                                </td>
+                                <td class="product-total">${p.total}</td>
+                            </tr>
+                        `);
+                    }
+
+                }
+            });
+        }
+
+    </script>
+
+{{/section}}
     
