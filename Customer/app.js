@@ -13,7 +13,7 @@ var shopRouter = require("./components/products/index");
 var aboutRouter = require("./routes/about");
 var contactRouter = require("./routes/contact");
 var newRouter = require("./routes/new");
-var cartRouter = require("./routes/cart");
+var cartRouter = require("./components/cart");
 var checkoutRouter = require("./routes/checkout");
 var authenticationRouter = require("./components/authentication");
 const profileRouter = require("./components/profile");
@@ -52,7 +52,7 @@ app.use(passport.authenticate("session"));
 app.use(function (req, res, next) {
     req.session.cart = req.session.cart || [];
     res.locals.user = req.user;
-    res.locals.cart = req.session.cart;
+    res.locals.cartLength = req.session.cart.reduce((total, item) => total + item.quantity, 0);
     next();
 });
 

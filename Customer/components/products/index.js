@@ -12,6 +12,4 @@ router.get("/api/add/:productID", productControllers.addToCart);
 
 router.get("/api/cate/:cateID/:page", productControllers.apiCategory);
 
-router.get("/api/cart/list", productControllers.cartList);
-
 module.exports = router;

@@ -90,9 +90,3 @@ exports.addToCart = async (req, res) => {
         success: true,
     });
 };
-
-exports.cartList = async (req, res) => {
-    res.json({
-        cart: req.session.cart,
-    });
-};

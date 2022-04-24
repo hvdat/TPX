@@ -80,59 +80,22 @@
                         <thead class="cart-table-head">
                         <tr class="table-head-row">
                             <th class="product-remove"></th>
-                            <th class="product-image">Product Image</th>
-                            <th class="product-name">Name</th>
-                            <th class="product-price">Price</th>
-                            <th class="product-quantity">Quantity</th>
-                            <th class="product-total">Total</th>
+                            <th class="product-image">Ảnh Sản Phẩm</th>
+                            <th class="product-name">Tên Sản Phẩm</th>
+                            <th class="product-price">Giá Tiền</th>
+                            <th class="product-quantity">Số Lượng</th>
+                            <th class="product-total">Tổng Cộng</th>
                         </tr>
                         </thead>
                         <tbody id="context">
-                        {{#each cart}}
-                            <tr class="table-body-row">
-                                <td class="product-remove">
-                                    <a onclick="deleteItem({{@index}})"><i class="far fa-window-close"></i></a>
-                                </td>
-                                <td class="product-image">
-                                    <img src={{img}} alt=""/>
-                                </td>
-                                <td class="product-name">{{name}}</td>
-                                <td class="product-price">{{price}}</td>
-                                <td class="product-quantity">
-                                    <input type="number" placeholder="0"/>
-                                </td>
-                                <td class="product-total">{{total}}</td>
-                            </tr>
-                        {{/each}}
                         </tbody>
                     </table>
                 </div>
             </div>
 
             <div class="col-lg-4">
-                <div class="total-section">
-                    <table class="total-table">
-                        <thead class="total-table-head">
-                        <tr class="table-total-row">
-                            <th>Total</th>
-                            <th>Price</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr class="total-data">
-                            <td><strong>Subtotal: </strong></td>
-                            <td>$500</td>
-                        </tr>
-                        <tr class="total-data">
-                            <td><strong>Shipping: </strong></td>
-                            <td>$45</td>
-                        </tr>
-                        <tr class="total-data">
-                            <td><strong>Total: </strong></td>
-                            <td>$545</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <div class="total-section" id="context-total">
+
                     <div class="cart-buttons">
                         <a href="/cart" class="boxed-btn">Update Cart</a>
                         <a href="/checkout" class="boxed-btn black">Check Out</a>
@@ -158,15 +121,66 @@
 
     <script type="application/javascript">
 
-        function deleteItem(idx) {
+        showCart();
+
+        function showCart() {
             $.ajax({
-                url: '/shop/api/cart/list',
+                url: '/cart/api/list',
                 type: 'GET',
                 success: function (data) {
                     let cart = data.cart;
 
-                    cart.splice(idx, 1);
-                    console.log(cart[idx].name);
+                    $('#context').html(data);
+
+                    for (let i = 0; i < cart.length; i++) {
+                        let p = cart[i];
+                        $('#context').append(`
+                            <tr class="table-body-row">
+                                <td class="product-remove">
+                                    <a onclick="deleteItem(${p.id})"><i class="far fa-window-close"></i></a>
+                                </td>
+                                <td class="product-image">
+                                    <img src=${p.img} alt=""/>
+                                </td>
+                                <td class="product-name">${p.name}</td>
+                                <td class="product-price">${p.price.toLocaleString()}</td>
+                                <td class="product-quantity">
+                                    <input type="number" min=0 value="${p.quantity}"/>
+                                </td>
+                                <td class="product-total">${p.total.toLocaleString()}</td>
+                            </tr>
+                        `);
+                    }
+
+                    $('#context-total').html(data);
+                    const totalPrice = data.cart.reduce((total, item) => total + item.total, 0);
+
+                    $('#context-total').append(`
+                        <table class="total-table">
+                        <thead class="total-table-head">
+                        <tr class="table-total-row">
+                            <th>Phí</th>
+                            <th>Giá Tiền</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="total-data">
+                            <td><strong>Tổng: </strong></td>
+                            <td>${totalPrice.toLocaleString()} VNĐ</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    `);
+                }
+            });
+        }
+
+        function deleteItem(productId) {
+            $.ajax({
+                url: '/cart/api/delete/' + productId,
+                type: 'GET',
+                success: function (data) {
+                    let cart = data.cart;
 
                     $('#context').html(data);
                     for (let i = 0; i < cart.length; i++) {
@@ -174,21 +188,39 @@
                         $('#context').append(`
                             <tr class="table-body-row">
                                 <td class="product-remove">
-                                    <a onclick="deleteItem()"><i class="far fa-window-close"></i></a>
+                                    <a onclick="deleteItem(${p.id})"><i class="far fa-window-close"></i></a>
                                 </td>
                                 <td class="product-image">
                                     <img src=${p.img} alt=""/>
                                 </td>
                                 <td class="product-name">${p.name}</td>
-                                <td class="product-price">${p.price}</td>
+                                <td class="product-price">${p.price.toLocaleString()}</td>
                                 <td class="product-quantity">
-                                    <input type="number" placeholder="0"/>
+                                    <input type="number" placeholder="${p.quantity}"/>
                                 </td>
-                                <td class="product-total">${p.total}</td>
+                                <td class="product-total">${p.total.toLocaleString()}</td>
                             </tr>
                         `);
                     }
+                    $('#context-total').html(data);
+                    const totalPrice = data.cart.reduce((total, item) => total + item.total, 0);
 
+                    $('#context-total').append(`
+                        <table class="total-table">
+                        <thead class="total-table-head">
+                        <tr class="table-total-row">
+                            <th>Phí</th>
+                            <th>Giá Tiền</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="total-data">
+                            <td><strong>Tổng: </strong></td>
+                            <td>${totalPrice.toLocaleString()} VNĐ</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    `);
                 }
             });
         }
