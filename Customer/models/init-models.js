@@ -12,12 +12,12 @@ function initModels(sequelize) {
   var products = _products(sequelize, DataTypes);
   var users = _users(sequelize, DataTypes);
 
-  products.belongsTo(category, { as: "category_category", foreignKey: "category"});
-  category.hasMany(products, { as: "products", foreignKey: "category"});
   order_detail.belongsTo(order, { as: "order", foreignKey: "order_id"});
   order.hasMany(order_detail, { as: "order_details", foreignKey: "order_id"});
   order_detail.belongsTo(products, { as: "product", foreignKey: "products_id"});
   products.hasMany(order_detail, { as: "order_details", foreignKey: "products_id"});
+  order.belongsTo(users, { as: "user", foreignKey: "user_id"});
+  users.hasMany(order, { as: "orders", foreignKey: "user_id"});
 
   return {
     category,

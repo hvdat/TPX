@@ -27,36 +27,12 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     price: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DECIMAL(10,0),
       allowNull: false
     }
   }, {
     sequelize,
     tableName: 'order_detail',
-    timestamps: false,
-    indexes: [
-      {
-        name: "PRIMARY",
-        unique: true,
-        using: "BTREE",
-        fields: [
-          { name: "id" },
-        ]
-      },
-      {
-        name: "orderDetail_products_idx",
-        using: "BTREE",
-        fields: [
-          { name: "products_id" },
-        ]
-      },
-      {
-        name: "orderDetail_order_idx",
-        using: "BTREE",
-        fields: [
-          { name: "order_id" },
-        ]
-      },
-    ]
+    timestamps: false
   });
 };
