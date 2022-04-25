@@ -10,7 +10,6 @@ exports.initOrder = async (req, user_id) => {
     })
 }
 
-
 exports.initOrderDetail = async (order_id, product_id, quantity, price) => {
     await order_detail.create({
         order_id: order_id,
