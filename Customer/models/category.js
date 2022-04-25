@@ -15,24 +15,6 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     sequelize,
     tableName: 'category',
-    timestamps: false,
-    indexes: [
-      {
-        name: "PRIMARY",
-        unique: true,
-        using: "BTREE",
-        fields: [
-          { name: "id" },
-        ]
-      },
-      {
-        name: "name_UNIQUE",
-        unique: true,
-        using: "BTREE",
-        fields: [
-          { name: "name" },
-        ]
-      },
-    ]
+    timestamps: false
   });
 };

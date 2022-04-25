@@ -1,5 +1,7 @@
 const {singleProduct} = require("../products/productsServices");
-exports.cart = (req, res, next) => {
+const {initOrder} = require("../cart/cartService");
+const {initOrderDetail} = require("../cart/cartService");
+exports.cart = (req, res) => {
     res.render("cart/cart");
 };
 
@@ -30,7 +32,12 @@ exports.deleteProduct = async (req, res) => {
     });
 };
 
-exports.payment = (req, res) => {
+exports.payment = async (req, res) => {
     const user_id = req.user.user_id;
-    
+    await initOrder(req, user_id);
+    const order_id = req.session.order_id;
+    const cart = req.session.cart;
+    for (let i = 0; i < cart.length; i++) {
+        await initOrderDetail(order_id, cart[i].id, cart[i].quantity, cart[i].total);
+    }
 };

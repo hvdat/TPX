@@ -17,32 +17,15 @@ module.exports = function(sequelize, DataTypes) {
     },
     price: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     status: {
       type: DataTypes.TINYINT,
-      allowNull: false
+      allowNull: true
     }
   }, {
     sequelize,
     tableName: 'order',
-    timestamps: false,
-    indexes: [
-      {
-        name: "PRIMARY",
-        unique: true,
-        using: "BTREE",
-        fields: [
-          { name: "id" },
-        ]
-      },
-      {
-        name: "order_users_idx",
-        using: "BTREE",
-        fields: [
-          { name: "user_id" },
-        ]
-      },
-    ]
+    timestamps: false
   });
 };
