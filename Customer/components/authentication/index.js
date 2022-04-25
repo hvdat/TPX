@@ -7,19 +7,19 @@ const passport = require("./passport");
 router.get("/register", authenticationControllers.registerShow);
 router.post("/register", authenticationControllers.register);
 router.get(
-  "/api/check-email-exist/:email",
-  authenticationControllers.checkEmailExist
+    "/api/check-email-exist/:email",
+    authenticationControllers.checkEmailExist
 );
 router.get("/login", authenticationControllers.loginShow);
 router.post(
-  "/login",
-  passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/login",
-  })
+    "/login",
+    passport.authenticate("local", {
+        successRedirect: "/",
+        failureRedirect: "/login",
+    })
 );
-router.get("/logout", function (req, res, next) {
-  req.logout();
-  res.redirect("/");
+router.get("/logout", function (req, res) {
+    req.logout();
+    res.redirect("/");
 });
 module.exports = router;

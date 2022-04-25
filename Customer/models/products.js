@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     price: {
-      type: DataTypes.DECIMAL(10,0),
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     img: {

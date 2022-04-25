@@ -442,6 +442,8 @@ a.boxed-btn {
     background-color: #005555;
     color: #fff;
     padding: 10px 20px;
+    text-align: center;
+    width: 15rem;
 }
 
 a.bordered-btn {
@@ -509,7 +511,7 @@ a.cart-btn {
 }
 
 .breadcrumb-text p {
-    color: #005555;
+    color: #069A8E;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 7px;
@@ -2510,7 +2512,7 @@ a.cart-btn {
     font-family: "Nunito", sans-serif;
     font-family: "Quicksand", sans-serif;
     display: inline-block;
-    background-color: #005555;
+    background-color: rgba(0, 85, 85, 1);
     color: #fff;
     padding: 10px 20px;
 }
@@ -2665,6 +2667,7 @@ tr.total-data td strong {
 
 .cart-buttons {
     margin-top: 30px;
+    text-align: center;
 }
 
 .cart-buttons a:first-child {

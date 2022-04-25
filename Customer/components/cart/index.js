@@ -9,4 +9,6 @@ router.get("/api/list", cartControllers.cartList);
 
 router.get("/api/delete/:productID", cartControllers.deleteProduct);
 
+router.get("/payment", cartControllers.payment);
+
 module.exports = router;

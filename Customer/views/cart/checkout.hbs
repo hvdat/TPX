@@ -187,30 +187,14 @@
 
             <div class="col-lg-4">
                 <div class="order-details-wrap">
-                    <table class="order-details">
+                    <table class="order-details" id="content">
                         <thead>
                         <tr>
-                            <th>Your order Details</th>
-                            <th>Price</th>
+                            <th>Product</th>
+                            <th>Total Price</th>
                         </tr>
                         </thead>
                         <tbody class="order-details-body">
-                        <tr>
-                            <td>Product</td>
-                            <td>Total</td>
-                        </tr>
-                        <tr>
-                            <td>Strawberry</td>
-                            <td>$85.00</td>
-                        </tr>
-                        <tr>
-                            <td>Berry</td>
-                            <td>$70.00</td>
-                        </tr>
-                        <tr>
-                            <td>Lemon</td>
-                            <td>$35.00</td>
-                        </tr>
                         </tbody>
                         <tbody class="checkout-details">
                         <tr>
@@ -234,3 +218,50 @@
     </div>
 </div>
 <!-- end check out section -->
+{{#section "script"}}
+
+    <script type="application/javascript">
+
+        showCart();
+
+        function showCart() {
+            $.ajax({
+                url: '/cart/api/list',
+                type: 'GET',
+                success: function (data) {
+                    let cart = data.cart;
+
+                    $('#context').html(data);
+
+                    for (let i = 0; i < cart.length; i++) {
+                        console.log(cart[i]);
+                        let p = cart[i];
+                        $('#context').append(`
+                         <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Total Price</th>
+                        </tr>
+                        </thead>
+                        <tbody class="order-details-body">
+                         <tr>
+                            <td>${p.name}</td>
+                            <td>${p.price}</td>
+                        </tr>
+                        </tbody>
+                        <tbody class="checkout-details">
+                        <tr>
+                            <td>Total</td>
+                            <td>$240</td>
+                        </tr>
+                        </tbody>
+                        `);
+                    }
+
+                    const totalPrice = data.cart.reduce((total, item) => total + item.total, 0);
+                }
+            });
+        }
+    </script>
+
+{{/section}}

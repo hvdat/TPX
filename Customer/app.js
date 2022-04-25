@@ -48,7 +48,9 @@ app.use(
     })
 );
 app.use(passport.authenticate("session"));
-
+app.get('/api/portfolio', passport.authenticate("session"), (req, res) => {
+    res.send(req.user);
+});
 app.use(function (req, res, next) {
     req.session.cart = req.session.cart || [];
     res.locals.user = req.user;

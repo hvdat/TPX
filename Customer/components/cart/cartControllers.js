@@ -1,6 +1,6 @@
 const {singleProduct} = require("../products/productsServices");
 exports.cart = (req, res, next) => {
-    res.render("cart");
+    res.render("cart/cart");
 };
 
 exports.cartList = async (req, res) => {
@@ -28,4 +28,9 @@ exports.deleteProduct = async (req, res) => {
         cart: req.session.cart,
         success: true,
     });
+};
+
+exports.payment = (req, res) => {
+    const user_id = req.user.user_id;
+    
 };
