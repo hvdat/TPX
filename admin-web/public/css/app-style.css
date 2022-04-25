@@ -3661,22 +3661,21 @@ table.grid td {
   
   .pagination-wrap ul li {
     display: inline-block;
+    background-color: #3275a8;
   }
   
   .pagination-wrap ul li a {
-    color: #6f6f6f;
-    font-size: 15px;
-    background-color: #f3f3f3;
-    display: inline-block;
-    padding: 8px 14px;
-    border-radius: 5px;
-    margin: 3px;
-    font-weight: 600;
-    border-radius: 50px;
+    color: lightsalmon;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    cursor: pointer;
   }
   
   .pagination-wrap ul li a.active {
-    background-color: #519259;
+    background-color: #fcbe03;
+    cursor: pointer;
   }
 
 
