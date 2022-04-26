@@ -1,4 +1,5 @@
 const {users} = require("../../models");
+const {order} = require("../../models");
 const {getInfo} = require("./profileControllers");
 const bcrypt = require("bcryptjs");
 

@@ -16,16 +16,13 @@
                     <!-- menu start -->
                     <nav class="main-menu">
                         <ul>
-                            <li>
+                            <li class="current-list-item">
                                 <a href="/">Trang chủ</a>
                             </li>
                             <li>
                                 <a href="/shop">Sản phẩm</a>
                             </li>
-                            <li>
-                                <a href="/news">Tin tức</a>
-                            </li>
-                            <li class="current-list-item"><a href="/contact">Liên hệ</a></li>
+                            <li><a href="/contact">Liên hệ</a></li>
                             <li><a href="/about">Giới thiệu</a></li>
                             <li>
                                 <div class="header-icons">
@@ -40,7 +37,7 @@
                                               id='lblCartCount'> 0 </span></a>
                                     {{/if}}
                                     {{#if user}}
-                                        <a href="/profile">chào, {{user.username}}!</a>
+                                        <a href="/profile">chào, {{user.name}}!</a>
                                         <a class="mobile-hide search-bar-icon" href="/logout"><span
                                         >Đăng xuất</span></a>{{else}}
                                         <a class="mobile-hide search-bar-icon" href="/login"><span
@@ -173,7 +170,7 @@
                                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
                                             data-target="#collapseThree" aria-expanded="false"
                                             aria-controls="collapseThree">
-                                        Card Details
+                                        Thông tin và tình trạng đơn hàng
                                     </button>
                                 </h5>
                             </div>
@@ -181,7 +178,28 @@
                                  data-parent="#accordionExample">
                                 <div class="card-body">
                                     <div class="card-details">
-                                        <p>Your card details goes here.</p>
+                                        <div class="cart-table-wrap">
+                                            <table class="cart-table">
+                                                <thead class="cart-table-head">
+                                                <tr class="table-head-row">
+                                                    <th class="product-name">Mã đơn hàng</th>
+                                                    <th class="product-name">Thành tiền</th>
+                                                    <th class="product-name">Địa chỉ</th>
+                                                    <th class="product-name">Tình trạng</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {{#each order}}
+                                                    <tr class="table-body-row">
+                                                        <td class="product-name">{{id}}</td>
+                                                        <td class="product-name">{{price}}</td>
+                                                        <td class="product-name">{{address}}</td>
+                                                        <td class="product-name">{{status}}</td>
+                                                    </tr>
+                                                {{/each}}
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -225,15 +243,17 @@
                 data: $('#change-pass-form').serialize(),
                 success: function () {
                     swal(
-                            'Đổi thành công!',
+                            'Đổi mật khẩu thành công!',
                             'Mật khẩu được đổi thành công, vui lòng đăng nhập lại!',
                             'success'
                     );
-                    displayInfo();
+                    setTimeout(function () {
+                        window.location.href = '/logout';
+                    }, 2000);
                 },
                 error: function () {
                     swal(
-                            'Đổi thất bại!',
+                            'Đổi mật khẩu thất bại!',
                             'Bạn đã nhập sai mật khẩu cũ, vui lòng nhập lại!',
                             'error'
                     );

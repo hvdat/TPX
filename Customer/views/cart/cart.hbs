@@ -15,14 +15,11 @@
                     <!-- menu start -->
                     <nav class="main-menu">
                         <ul>
-                            <li>
+                            <li class="current-list-item">
                                 <a href="/">Trang chủ</a>
                             </li>
                             <li>
                                 <a href="/shop">Sản phẩm</a>
-                            </li>
-                            <li>
-                                <a href="/news">Tin tức</a>
                             </li>
                             <li><a href="/contact">Liên hệ</a></li>
                             <li><a href="/about">Giới thiệu</a></li>
@@ -39,7 +36,7 @@
                                               id='lblCartCount'> 0 </span></a>
                                     {{/if}}
                                     {{#if user}}
-                                        <a>chào, {{user.username}}!</a>
+                                        <a href="/profile">chào, {{user.name}}!</a>
                                         <a class="mobile-hide search-bar-icon" href="/logout"><span
                                         >Đăng xuất</span></a>{{else}}
                                         <a class="mobile-hide search-bar-icon" href="/login"><span
@@ -81,7 +78,7 @@
 <div class="cart-section mt-150 mb-150">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-md-12">
+            <div class="col-lg-12 col-md-12">
                 <div class="cart-table-wrap">
                     <table class="cart-table">
                         <thead class="cart-table-head">
@@ -97,61 +94,20 @@
                         <tbody id="context">
                         </tbody>
                     </table>
+                    <div id="submit-box">
+                        <a href="/cart/checkout" id="update-info-form">Thanh Toán</a>
+                    </div>
                 </div>
             </div>
-
-            <div class="col-lg-4">
-                <div class="total-section" id="context-total">
-                </div>
-
-                <div id="login-noti">
-                </div>
-                <div class="cart-buttons">
-                    <a class="boxed-btn black" id="payment-btn">Đặt Hàng</a>
-                </div>
-            </div>
-
         </div>
     </div>
 </div>
-<!-- end cart -->
 
+<!-- end cart -->
 {{#section "script"}}
 
     <script type="application/javascript">
-        userlog();
         showCart();
-        $(document).on('click', '#payment-btn', function (e) {
-                    $.ajax({
-                        url: '/cart/payment',
-                        type: 'GET',
-                    });
-                    swal(
-                            'Đặt hàng thành công!',
-                            'Cảm ơn bạn đã đặt hàng, đơn hàng sẽ được giao vào thời gian sớm nhất!',
-                            'success'
-                    )
-                    setTimeout(function () {
-                        window.location.href = '/';
-                    }, 3000);
-                }
-        );
-
-        function userlog() {
-            $.ajax({
-                url: '/api/portfolio',
-                type: 'GET',
-                success: function (data) {
-                    if (typeof data === 'string' || data instanceof String) {
-                        $('#payment-btn').hide();
-                        $('#login-noti').append('<span>Hãy <a href="/login">đăng nhập</a> hoặc <a href="/register"> đăng kí </a>để đặt hàng</span>');
-                    } else {
-                        $('#login-noti').hide();
-                    }
-                }
-            });
-        }
-
 
         function showCart() {
             $.ajax({
@@ -159,8 +115,14 @@
                 type: 'GET',
                 success: function (data) {
                     let cart = data.cart;
-
+                    console.log(cart);
                     $('#context').html(data);
+
+                    if (cart.length > 0) {
+                        $('#update-info-form').show();
+                    } else {
+                        $('#update-info-form').hide();
+                    }
 
                     for (let i = 0; i < cart.length; i++) {
                         let p = cart[i];
@@ -182,26 +144,6 @@
 
                         `);
                     }
-
-                    $('#context-total').html(data);
-                    const totalPrice = data.cart.reduce((total, item) => total + item.total, 0);
-
-                    $('#context-total').append(`
-                        <table class="total-table">
-                        <thead class="total-table-head">
-                        <tr class="table-total-row">
-                            <th>Phí</th>
-                            <th>Giá Tiền</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr class="total-data">
-                            <td><strong>Tổng: </strong></td>
-                            <td>${totalPrice.toLocaleString()} VNĐ</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    `);
                 }
             });
         }
@@ -233,28 +175,6 @@
                             </tr>
                         `);
                     }
-                    $('#context-total').html(data);
-                    const totalPrice = data.cart.reduce((total, item) => total + item.total, 0);
-
-                    $('#context-total').append(`
-                        <table class="total-table">
-                        <thead class="total-table-head">
-                        <tr class="table-total-row">
-                            <th>Phí</th>
-                            <th>Giá Tiền</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr class="total-data">
-                            <td><strong>Tổng: </strong></td>
-                            <td>${totalPrice.toLocaleString()} VNĐ</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div class="cart-buttons">
-                        <a href="" class="boxed-btn black">Đặt Hàng</a>
-                    </div>
-                    `);
                 }
             });
         }

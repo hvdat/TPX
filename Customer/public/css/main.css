@@ -1526,6 +1526,20 @@ body {
     border-radius: 3px;
 }
 
+#payment-btn {
+    user-select: none;
+    text-align: center;
+    background-color: #005555;
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 15px;
+    border: none !important;
+    cursor: pointer;
+    padding: 12px 17px;
+    border-radius: 3px;
+}
+
 .homepage-bg-1 {
     background-image: url(https://i.imgur.com/an2Ryjk.jpg);
 }

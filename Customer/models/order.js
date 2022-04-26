@@ -18,6 +18,14 @@ module.exports = function(sequelize, DataTypes) {
     status: {
       type: DataTypes.TINYINT,
       allowNull: true
+    },
+    address: {
+      type: DataTypes.STRING(400),
+      allowNull: true
+    },
+    desc: {
+      type: DataTypes.STRING(1000),
+      allowNull: true
     }
   }, {
     sequelize,

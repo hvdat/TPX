@@ -1,7 +1,21 @@
 const profileService = require("./profileService");
-exports.profileShow = (req, res, next) => {
-    if (req.user) res.render("profile");
-    else res.redirect("/login");
+const cartService = require("../cart/cartService");
+
+exports.profileShow = async (req, res, next) => {
+    if (req.user) {
+        const order = await cartService.showAllUserOrders(req.user.user_id);
+        for (let i = 0; i < order.length; i++) {
+            const status = order[i].status;
+            if (status === 0) {
+                order[i].status = "Chờ xử lí";
+            } else if (status === 1) {
+                order[i].status = "Đang giao";
+            } else if (status === 2) {
+                order[i].status = "Đã giao";
+            }
+        }
+        res.render("profile", {order});
+    } else res.redirect("/login");
 };
 
 exports.updatePassword = async function (req, res) {

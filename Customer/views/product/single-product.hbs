@@ -15,14 +15,11 @@
                     <!-- menu start -->
                     <nav class="main-menu">
                         <ul>
-                            <li>
+                            <li class="current-list-item">
                                 <a href="/">Trang chủ</a>
                             </li>
-                            <li class="current-list-item">
-                                <a href="/shop">Sản phẩm</a>
-                            </li>
                             <li>
-                                <a href="/news">Tin tức</a>
+                                <a href="/shop">Sản phẩm</a>
                             </li>
                             <li><a href="/contact">Liên hệ</a></li>
                             <li><a href="/about">Giới thiệu</a></li>
@@ -39,7 +36,7 @@
                                               id='lblCartCount'> 0 </span></a>
                                     {{/if}}
                                     {{#if user}}
-                                        <a>chào, {{user.username}}!</a>
+                                        <a href="/profile">chào, {{user.name}}!</a>
                                         <a class="mobile-hide search-bar-icon" href="/logout"><span
                                         >Đăng xuất</span></a>{{else}}
                                         <a class="mobile-hide search-bar-icon" href="/login"><span
