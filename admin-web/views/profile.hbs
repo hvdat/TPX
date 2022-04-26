@@ -51,6 +51,7 @@
                     <span>Comments List</span>
                 </a>
             </li>
+
             <li>
                 <a href="/profile">
                     <i class="zmdi zmdi-grid"></i>
@@ -119,64 +120,56 @@
 
     <div class="clearfix"></div>
     {{#if user}}
+    <div class="clearfix"></div>
+
     <div class="content-wrapper">
-        <!-- comment -->
         <div class="container-fluid">
+
             <div class="row mt-3">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Danh Sách Bình Luận</h5>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Comment ID</th>
-                                            <th scope="col">User ID</th>
-                                            <th scope="col">Product ID</th>
-                                            <th scope="col">Comment</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="context">
-
-                                    </tbody>
-                                </table>
-                            </div>
+                            <div class="card-title">Post New Product</div>
+                            <hr>
+                            <form method="post">
+                                <div class="form-group">
+                                    <label for="id">ID</label>
+                                    <input name="id" type="text" class="form-control form-control-rounded" id="id"
+                                        value="{{user.id}}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input name="username" type="text" class="form-control form-control-rounded"
+                                        id="username" placeholder="{{user.username}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tel">Phone Number</label>
+                                    <input name="tel" type="text"  class="form-control form-control-rounded" id="tel"
+                                        placeholder="{{user.tel}}">
+                                </div>
+                                <div class="alert" style="color: red;">{{error}}</div>
+                                <div class="noti" style="color:greenyellow;">{{noti}}</div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-light btn-round px-5">
+                                        UPDATE
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <!--End Row-->
-
-                <!--start overlay-->
-                <div class="overlay toggle-menu" id=""></div>
-                <!--end overlay-->
-
-
             </div>
-            <!-- End container-fluid-->
+            <!--End Row-->
+
+            <!--start overlay-->
+            <div class="overlay toggle-menu"></div>
+            <!--end overlay-->
 
         </div>
-        <!-- end comment -->
+        <!-- End container-fluid-->
 
-        <!--End content-wrapper-->
-
-        <!--Pagination -->
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="pagination-wrap">
-                    <ul>
-                        <li><a onclick="prevPage()">Prev</a></li>
-                        {{#pages}}
-                        <li><a onclick="loadPage({{.}})">{{.}}</a></li>
-                        {{/pages}}
-                        <li><a onclick="nextPage()">Next</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!--End Pagination -->
     </div>
-
+    <!--End content-wrapper-->
     {{else}}
     <h1 class="content-wrapper">WARNING: UNAUTHORIZED ACCESS!<br> Please <a href="/login"
             style="color:crimson;"><strong>LOGIN</strong></a> to use this function!</h1>
@@ -200,7 +193,7 @@
         </div>
         <div class="right-sidebar-content">
 
-            <cmt class="mb-0">Gaussion Texture</cmt>
+            <p class="mb-0">Gaussion Texture</p>
             <hr>
 
             <ul class="switcher">
@@ -212,7 +205,7 @@
                 <li id="theme6"></li>
             </ul>
 
-            <cmt class="mb-0">Gradient Background</cmt>
+            <p class="mb-0">Gradient Background</p>
             <hr>
 
             <ul class="switcher">
@@ -234,113 +227,3 @@
 </div>
 </div>
 <!--End wrapper-->
-{{#section "script"}}
-
-<script type="application/javascript">
-    var currPage = 1;
-    var limit = 0;
-    loadPage(1);
-    function loadPage(page) {
-        currPage = page;
-        $.ajax({
-            url: 'listcmt/api/' + page,
-            type: 'GET'
-        }).then(data => {
-            -
-                $('#context').html(data);
-            $('#context').fadeOut("fast");
-            const comment = data.comment;
-            console.log(comment);
-            limit = limit > comment.length ? limit : comment.length;
-            for (let i = 0; i < comment.length; i++) {
-                const cmt = comment[i];
-                const items = $(`
-                                        <tr>
-                                            <td>${cmt.id}</td>
-                                            <td>${cmt.user_id}</td>
-                                            <td>${cmt.product_id}</td>
-                                            <td>${cmt.comment}</td>
-                                        </tr>
-                            `);
-                setTimeout(function () {
-                    $('#context').append(items);
-
-                }, 200);
-                $('#context').fadeIn("slow");
-
-            }
-        })
-    }
-
-    function nextPage() {
-        if (currPage + 1 > limit) {
-            currPage = limit;
-        } else {
-            currPage++;
-        }
-        let page = currPage;
-        console.log("🚀 ~ file: listmem.hbs ~ line 205 ~ nextPage ~ page", page)
-        $.ajax({
-            url: 'listcmt/api/' + page,
-            type: 'GET'
-        })
-            .then(data => {
-                $('#context').html(data);
-                $('#context').fadeOut("fast");
-                const comment = data.comment;
-                for (let i = 0; i < comment.length; i++) {
-                    const cmt = comment[i];
-                    const items = $(`
-                                        <tr>
-                                            <td>${cmt.id}</td>
-                                            <td>${cmt.user_id}</td>
-                                            <td>${cmt.product_id}</td>
-                                            <td>${cmt.comment}</td>
-                                        </tr>
-                        `);
-                    setTimeout(function () {
-                        $('#context').append(items);
-
-                    }, 200);
-                    $('#context').fadeIn("slow");
-                }
-            })
-    }
-
-    function prevPage() {
-        if (currPage - 1 <= 0) {
-            currPage = 1;
-        } else {
-            currPage--;
-        }
-        let page = currPage;
-        console.log("🚀 ~ file: listmem.hbs ~ line 241 ~ prevPage ~ page", page)
-        $.ajax({
-            url: 'listcmt/api/' + page,
-            type: 'GET'
-        })
-            .then(data => {
-                $('#context').html(data);
-                $('#context').fadeOut("fast");
-                const comment = data.comment;
-                for (let i = 0; i < comment.length; i++) {
-                    const cmt = comment[i];
-                    const items = $(`
-                                        <tr>
-                                            <td>${cmt.id}</td>
-                                            <td>${cmt.user_id}</td>
-                                            <td>${cmt.product_id}</td>
-                                            <td>${cmt.comment}</td>
-                                        </tr>
-                        `);
-                    setTimeout(function () {
-                        $('#context').append(items);
-
-                    }, 200);
-                    $('#context').fadeIn("slow");
-                }
-            })
-    }
-</script>
-
-{{/section}}

@@ -30,6 +30,30 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     sequelize,
     tableName: 'comment',
-    timestamps: false
+    timestamps: false,
+    indexes: [
+      {
+        name: "PRIMARY",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "id" },
+        ]
+      },
+      {
+        name: "comment_users_idx",
+        using: "BTREE",
+        fields: [
+          { name: "user_id" },
+        ]
+      },
+      {
+        name: "comment_products_idx",
+        using: "BTREE",
+        fields: [
+          { name: "product_id" },
+        ]
+      },
+    ]
   });
 };
