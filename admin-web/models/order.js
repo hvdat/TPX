@@ -1,40 +1,31 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('users', {
+  return sequelize.define('order', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    email: {
-      type: DataTypes.STRING(256),
+    user_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
-      unique: "email_UNIQUE"
+      references: {
+        model: 'users',
+        key: 'id'
+      }
     },
-    password: {
-      type: DataTypes.STRING(120),
-      allowNull: false
-    },
-    name: {
-      type: DataTypes.STRING(256),
+    price: {
+      type: DataTypes.INTEGER,
       allowNull: true
     },
-    avatar: {
-      type: DataTypes.STRING(2048),
-      allowNull: true
-    },
-    tel: {
-      type: DataTypes.STRING(10),
-      allowNull: true
-    },
-    address: {
-      type: DataTypes.STRING(2048),
+    status: {
+      type: DataTypes.TINYINT,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'users',
+    tableName: 'order',
     timestamps: false,
     indexes: [
       {
@@ -46,11 +37,10 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "email_UNIQUE",
-        unique: true,
+        name: "order_users_idx",
         using: "BTREE",
         fields: [
-          { name: "email" },
+          { name: "user_id" },
         ]
       },
     ]

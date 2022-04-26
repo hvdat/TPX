@@ -3650,34 +3650,33 @@ table.grid td {
 }
 
 .pagination-wrap {
-  margin-top: 40px;
-}
-
-.pagination-wrap ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.pagination-wrap ul li {
-  display: inline-block;
-}
-
-.pagination-wrap ul li a {
-  color: #6f6f6f;
-  font-size: 15px;
-  background-color: #f3f3f3;
-  display: inline-block;
-  padding: 8px 14px;
-  border-radius: 5px;
-  margin: 3px;
-  font-weight: 600;
-  border-radius: 50px;
-}
-
-.pagination-wrap ul li a.active {
-  background-color: #519259;
-}
+    margin-top: 40px;
+  }
+  
+  .pagination-wrap ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .pagination-wrap ul li {
+    display: inline-block;
+    background-color: #3275a8;
+  }
+  
+  .pagination-wrap ul li a {
+    color: lightsalmon;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    cursor: pointer;
+  }
+  
+  .pagination-wrap ul li a.active {
+    background-color: #fcbe03;
+    cursor: pointer;
+  }
 
 
 

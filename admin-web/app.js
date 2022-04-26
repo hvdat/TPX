@@ -4,6 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const session = require("express-session");
+var exphbs = require("express-handlebars");
 
 const passport = require("./components/authentication/passport");
 var indexRouter = require("./routes/index");
@@ -12,10 +13,23 @@ var orderlistRouter = require("./routes/orderlist");
 var postRouter = require("./components/post_product");
 var signupRouter = require("./routes/signup");
 var listRouter = require("./components/list_product");
-
+var listMemRouter = require("./components/list_member");
+var listCmtRouter = require("./components/list_comment");
 var app = express();
 
 // view engine setup
+var hbs = exphbs.create({
+  defaultLayout: "layout",
+  extname: ".hbs",
+  helpers: {
+      section: function (name, options) {
+          if (!this._sections) this._sections = {};
+          this._sections[name] = options.fn(this);
+          return null;
+      },
+  },
+});
+app.engine("hbs", hbs.engine);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 
@@ -46,6 +60,8 @@ app.use("/post", postRouter);
 app.use("/signup", signupRouter);
 app.use("/list", listRouter);
 app.use("/insert", indexRouter);
+app.use("/listmem", listMemRouter)
+app.use("/listcmt", listCmtRouter)
 
 
 // catch 404 and forward to error handler
