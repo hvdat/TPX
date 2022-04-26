@@ -114,23 +114,23 @@
     <div class="clearfix"></div>
     {{#if user}}
     <div class="content-wrapper">
-        <!-- products -->
+        <!-- users -->
         <div class="container-fluid">
             <div class="row mt-3">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Danh Sách Sản Phẩm</h5>
+                            <h5 class="card-title">Danh Sách Thành Viên</h5>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
                                             <th scope="col">Name</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col">Description</th>
-                                            <th scope="col">Image URL</th>
-                                            <th scope="col">Category</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Avatar URL</th>
+                                            <th scope="col">Phone Number</th>
+                                            <th scope="col">Address</th>
                                         </tr>
                                     </thead>
                                     <tbody id="context">
@@ -152,7 +152,7 @@
             <!-- End container-fluid-->
 
         </div>
-        <!-- end products -->
+        <!-- end users -->
 
         <!--End content-wrapper-->
 
@@ -196,7 +196,7 @@
         </div>
         <div class="right-sidebar-content">
 
-            <p class="mb-0">Gaussion Texture</p>
+            <usr class="mb-0">Gaussion Texture</usr>
             <hr>
 
             <ul class="switcher">
@@ -208,7 +208,7 @@
                 <li id="theme6"></li>
             </ul>
 
-            <p class="mb-0">Gradient Background</p>
+            <usr class="mb-0">Gradient Background</usr>
             <hr>
 
             <ul class="switcher">
@@ -239,25 +239,25 @@
     function loadPage(page) {
         currPage = page;
         $.ajax({
-            url: 'list/api/' + page,
+            url: 'listmem/api/' + page,
             type: 'GET'
         }).then(data => {
             -
                 $('#context').html(data);
             $('#context').fadeOut("fast");
-            const products = data.products;
-            console.log(products);
-            limit = limit > products.length ? limit : products.length;
-            for (let i = 0; i < products.length; i++) {
-                const p = products[i];
+            const users = data.users;
+            console.log(users);
+            limit = limit > users.length ? limit : users.length;
+            for (let i = 0; i < users.length; i++) {
+                const usr = users[i];
                 const items = $(`
                                         <tr>
-                                            <td>${p.id}</td>
-                                            <td>${p.name}</td>
-                                            <td>${p.price}</td>
-                                            <td>${p.desc}</td>
-                                            <td>${p.img}</td>
-                                            <td>${p.category}</td>
+                                            <td>${usr.id}</td>
+                                            <td>${usr.name}</td>
+                                            <td>${usr.email}</td>
+                                            <td>${usr.avatar}</td>
+                                            <td>${usr.tel}</td>
+                                            <td>${usr.address}</td>
                                         </tr>
                             `);
                 setTimeout(function () {
@@ -277,25 +277,25 @@
             currPage++;
         }
         let page = currPage;
-        console.log("🚀 ~ file: list.hbs ~ line 205 ~ nextPage ~ page", page)
+        console.log("🚀 ~ file: listmem.hbs ~ line 205 ~ nextPage ~ page", page)
         $.ajax({
-            url: 'list/api/' + page,
+            url: 'listmem/api/' + page,
             type: 'GET'
         })
             .then(data => {
                 $('#context').html(data);
                 $('#context').fadeOut("fast");
-                const products = data.products;
-                for (let i = 0; i < products.length; i++) {
-                    const p = products[i];
+                const users = data.users;
+                for (let i = 0; i < users.length; i++) {
+                    const usr = users[i];
                     const items = $(`
                                         <tr>
-                                            <td>${p.id}</td>
-                                            <td>${p.name}</td>
-                                            <td>${p.price}</td>
-                                            <td>${p.desc}</td>
-                                            <td>${p.img}</td>
-                                            <td>${p.category}</td>
+                                            <td>${usr.id}</td>
+                                            <td>${usr.name}</td>
+                                            <td>${usr.email}</td>
+                                            <td>${usr.avatar}</td>
+                                            <td>${usr.tel}</td>
+                                            <td>${usr.address}</td>
                                         </tr>
                         `);
                     setTimeout(function () {
@@ -314,25 +314,25 @@
             currPage--;
         }
         let page = currPage;
-        console.log("🚀 ~ file: list.hbs ~ line 241 ~ prevPage ~ page", page)
+        console.log("🚀 ~ file: listmem.hbs ~ line 241 ~ prevPage ~ page", page)
         $.ajax({
-            url: 'list/api/' + page,
+            url: 'listmem/api/' + page,
             type: 'GET'
         })
             .then(data => {
                 $('#context').html(data);
                 $('#context').fadeOut("fast");
-                const products = data.products;
-                for (let i = 0; i < products.length; i++) {
-                    const p = products[i];
+                const users = data.users;
+                for (let i = 0; i < users.length; i++) {
+                    const usr = users[i];
                     const items = $(`
                                         <tr>
-                                            <td>${p.id}</td>
-                                            <td>${p.name}</td>
-                                            <td>${p.price}</td>
-                                            <td>${p.desc}</td>
-                                            <td>${p.img}</td>
-                                            <td>${p.category}</td>
+                                            <td>${usr.id}</td>
+                                            <td>${usr.name}</td>
+                                            <td>${usr.email}</td>
+                                            <td>${usr.avatar}</td>
+                                            <td>${usr.tel}</td>
+                                            <td>${usr.address}</td>
                                         </tr>
                         `);
                     setTimeout(function () {

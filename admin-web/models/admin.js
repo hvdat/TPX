@@ -29,6 +29,48 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     sequelize,
     tableName: 'admin',
-    timestamps: false
+    timestamps: false,
+    indexes: [
+      {
+        name: "PRIMARY",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "id" },
+        ]
+      },
+      {
+        name: "id_UNIQUE",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "id" },
+        ]
+      },
+      {
+        name: "new_tablecol_UNIQUE",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "username" },
+        ]
+      },
+      {
+        name: "email_UNIQUE",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "email" },
+        ]
+      },
+      {
+        name: "tel_UNIQUE",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "tel" },
+        ]
+      },
+    ]
   });
 };
