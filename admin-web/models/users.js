@@ -27,28 +27,14 @@ module.exports = function(sequelize, DataTypes) {
     tel: {
       type: DataTypes.STRING(10),
       allowNull: true
+    },
+    address: {
+      type: DataTypes.STRING(2048),
+      allowNull: true
     }
   }, {
     sequelize,
     tableName: 'users',
-    timestamps: false,
-    indexes: [
-      {
-        name: "PRIMARY",
-        unique: true,
-        using: "BTREE",
-        fields: [
-          { name: "id" },
-        ]
-      },
-      {
-        name: "email_UNIQUE",
-        unique: true,
-        using: "BTREE",
-        fields: [
-          { name: "email" },
-        ]
-      },
-    ]
+    timestamps: false
   });
 };

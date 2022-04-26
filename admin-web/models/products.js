@@ -30,6 +30,23 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     sequelize,
     tableName: 'products',
-    timestamps: false
+    timestamps: false,
+    indexes: [
+      {
+        name: "PRIMARY",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "id" },
+        ]
+      },
+      {
+        name: "products_category_idx",
+        using: "BTREE",
+        fields: [
+          { name: "category" },
+        ]
+      },
+    ]
   });
 };

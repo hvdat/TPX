@@ -4,7 +4,8 @@ module.exports = function(sequelize, DataTypes) {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      autoIncrement: true
     },
     order_id: {
       type: DataTypes.INTEGER,
@@ -18,37 +19,13 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    price: {
+    total_price: {
       type: DataTypes.INTEGER,
       allowNull: false
     }
   }, {
     sequelize,
     tableName: 'order_detail',
-    timestamps: false,
-    indexes: [
-      {
-        name: "PRIMARY",
-        unique: true,
-        using: "BTREE",
-        fields: [
-          { name: "id" },
-        ]
-      },
-      {
-        name: "orderDetail_order_idx",
-        using: "BTREE",
-        fields: [
-          { name: "order_id" },
-        ]
-      },
-      {
-        name: "orderDetail_product_idx",
-        using: "BTREE",
-        fields: [
-          { name: "products_id" },
-        ]
-      },
-    ]
+    timestamps: false
   });
 };
