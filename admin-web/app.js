@@ -15,6 +15,7 @@ var signupRouter = require("./routes/signup");
 var listRouter = require("./components/list_product");
 var listMemRouter = require("./components/list_member");
 var listCmtRouter = require("./components/list_comment");
+const profileRouter = require("./components/profile");
 var app = express();
 
 // view engine setup
@@ -62,6 +63,7 @@ app.use("/list", listRouter);
 app.use("/insert", indexRouter);
 app.use("/listmem", listMemRouter)
 app.use("/listcmt", listCmtRouter)
+app.use("/profile", profileRouter);
 
 
 // catch 404 and forward to error handler
