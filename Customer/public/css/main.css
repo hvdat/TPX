@@ -180,6 +180,11 @@ p {
     margin: 0 0 1.25rem 0;
 }
 
+#submit-box {
+    text-align: center;
+    margin-top: 35px;
+}
+
 p:last-child {
     margin: 0;
 }
@@ -435,18 +440,18 @@ p:last-child {
     background-color: #162133;
 }
 
-/*a.boxed-btn {*/
-/*    font-family: "Nunito", sans-serif;*/
-/*    font-family: "Quicksand", sans-serif;*/
-/*    display: inline-block;*/
-/*    background-color: #005555;*/
-/*    color: #fff;*/
-/*    padding: 10px 20px;*/
-/*    text-align: center;*/
-/*    width: 15rem;*/
-/*}*/
-
 a.boxed-btn {
+    font-family: "Nunito", sans-serif;
+    font-family: "Quicksand", sans-serif;
+    display: inline-block;
+    background-color: #005555;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    width: 15rem;
+}
+
+.boxed-btn-disabled {
     font-family: "Nunito", sans-serif;
     font-family: "Quicksand", sans-serif;
     display: inline-block;
@@ -457,6 +462,7 @@ a.boxed-btn {
     width: 15rem;
     pointer-events: none;
     user-select: none;
+    border-radius: 50px;
 }
 
 a.bordered-btn {
@@ -1217,14 +1223,14 @@ ul.social-link-team li a:hover {
     box-shadow: 0 0 80px #6f6f6f;
 }
 
-input[type="submit"] {
+button[type="submit"] {
     -webkit-transition: 0.3s;
     -o-transition: 0.3s;
     transition: 0.3s;
     border-radius: 50px !important;
 }
 
-input[type="submit"]:hover {
+button[type="submit"]:hover {
     background-color: #051922;
     color: #005555;
 }
@@ -1506,7 +1512,9 @@ body {
     height: 600px;
 }
 
-input[type="submit"] {
+#update-info-form {
+    user-select: none;
+    text-align: center;
     background-color: #005555;
     color: #ffffff;
     font-weight: 700;
@@ -1514,7 +1522,7 @@ input[type="submit"] {
     font-size: 15px;
     border: none !important;
     cursor: pointer;
-    padding: 15px 25px;
+    padding: 12px 17px;
     border-radius: 3px;
 }
 
@@ -2344,8 +2352,9 @@ ul.social-link-team li a {
 .contact-form form p input[type="text"],
 .contact-form form p input[type="email"],
 .contact-form form p input[type="tel"],
-.contact-form form p input[type="password"] {
-    width: 49%;
+.contact-form form p input[type="password"],
+.contact-form form p input[type="date"] {
+    width: 100%;
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 3px;
@@ -2362,12 +2371,12 @@ ul.social-link-team li a {
 
 .contact-form-wrap {
     background-color: #fbfbfb;
-    padding: 45px 30px;
+    padding: 45px 0;
     border-radius: 5px;
+    text-align: center;
 }
 
 .contact-form-box {
-    padding-left: 40px;
     margin-bottom: 30px;
 }
 
@@ -2842,4 +2851,15 @@ table.order-details tbody td {
     display: table-cell;
     vertical-align: middle;
     width: 100%;
+}
+
+#login-noti {
+    font-size: 15px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }

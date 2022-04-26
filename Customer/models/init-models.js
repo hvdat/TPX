@@ -1,6 +1,7 @@
 var DataTypes = require("sequelize").DataTypes;
 var _admin = require("./admin");
 var _category = require("./category");
+var _comment = require("./comment");
 var _order = require("./order");
 var _order_detail = require("./order_detail");
 var _products = require("./products");
@@ -9,6 +10,7 @@ var _users = require("./users");
 function initModels(sequelize) {
   var admin = _admin(sequelize, DataTypes);
   var category = _category(sequelize, DataTypes);
+  var comment = _comment(sequelize, DataTypes);
   var order = _order(sequelize, DataTypes);
   var order_detail = _order_detail(sequelize, DataTypes);
   var products = _products(sequelize, DataTypes);
@@ -16,14 +18,17 @@ function initModels(sequelize) {
 
   order_detail.belongsTo(order, { as: "order", foreignKey: "order_id"});
   order.hasMany(order_detail, { as: "order_details", foreignKey: "order_id"});
+  comment.belongsTo(products, { as: "product", foreignKey: "product_id"});
+  products.hasMany(comment, { as: "comments", foreignKey: "product_id"});
   order_detail.belongsTo(products, { as: "product", foreignKey: "products_id"});
   products.hasMany(order_detail, { as: "order_details", foreignKey: "products_id"});
-  order.belongsTo(users, { as: "user", foreignKey: "user_id"});
-  users.hasMany(order, { as: "orders", foreignKey: "user_id"});
+  comment.belongsTo(users, { as: "user", foreignKey: "user_id"});
+  users.hasMany(comment, { as: "comments", foreignKey: "user_id"});
 
   return {
     admin,
     category,
+    comment,
     order,
     order_detail,
     products,

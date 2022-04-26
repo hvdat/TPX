@@ -18,7 +18,10 @@ passport.use(
 
 passport.serializeUser(function (user, cb) {
     process.nextTick(function () {
-        cb(null, {user_id: user.id, name: user.name, avt: user.avatar});
+        cb(null, {
+            user_id: user.id,
+            name: user.name,
+        });
     });
 });
 

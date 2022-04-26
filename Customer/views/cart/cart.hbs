@@ -28,9 +28,16 @@
                             <li><a href="/about">Giới thiệu</a></li>
                             <li>
                                 <div class="header-icons">
-                                    <a class="shopping-cart" href="/cart"><i
-                                            class="fas fa-shopping-cart"
-                                    ></i></a>
+                                <a class="shopping-cart" href="/cart"><i
+                                        class="fas fa-shopping-cart"
+                                ></i>
+                                    {{#if cartLength}}
+                                        <span class='badge badge-warning cart-count'
+                                              id='lblCartCount'> {{cartLength}} </span></a>
+                                    {{else}}
+                                        <span class='badge badge-warning cart-count'
+                                              id='lblCartCount'> 0 </span></a>
+                                    {{/if}}
                                     {{#if user}}
                                         <a>chào, {{user.username}}!</a>
                                         <a class="mobile-hide search-bar-icon" href="/logout"><span
@@ -97,8 +104,10 @@
                 <div class="total-section" id="context-total">
                 </div>
 
+                <div id="login-noti">
+                </div>
                 <div class="cart-buttons">
-                    <a href="" class="boxed-btn black">Đặt Hàng</a>
+                    <a class="boxed-btn black" id="payment-btn">Đặt Hàng</a>
                 </div>
             </div>
 
@@ -110,8 +119,39 @@
 {{#section "script"}}
 
     <script type="application/javascript">
-
+        userlog();
         showCart();
+        $(document).on('click', '#payment-btn', function (e) {
+                    $.ajax({
+                        url: '/cart/payment',
+                        type: 'GET',
+                    });
+                    swal(
+                            'Đặt hàng thành công!',
+                            'Cảm ơn bạn đã đặt hàng, đơn hàng sẽ được giao vào thời gian sớm nhất!',
+                            'success'
+                    )
+                    setTimeout(function () {
+                        window.location.href = '/';
+                    }, 3000);
+                }
+        );
+
+        function userlog() {
+            $.ajax({
+                url: '/api/portfolio',
+                type: 'GET',
+                success: function (data) {
+                    if (typeof data === 'string' || data instanceof String) {
+                        $('#payment-btn').hide();
+                        $('#login-noti').append('<span>Hãy <a href="/login">đăng nhập</a> hoặc <a href="/register"> đăng kí </a>để đặt hàng</span>');
+                    } else {
+                        $('#login-noti').hide();
+                    }
+                }
+            });
+        }
+
 
         function showCart() {
             $.ajax({

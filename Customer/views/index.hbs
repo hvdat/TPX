@@ -39,7 +39,7 @@
                                               id='lblCartCount'> 0 </span></a>
                                     {{/if}}
                                     {{#if user}}
-                                        <a>chào, {{user.name}}!</a>
+                                        <a href="/profile">chào, {{user.name}}!</a>
                                         <a class="mobile-hide search-bar-icon" href="/logout"><span
                                         >Đăng xuất</span></a>{{else}}
                                         <a class="mobile-hide search-bar-icon" href="/login"><span
@@ -381,4 +381,10 @@
         </div>
     </div>
 </div>
+<button id="success">Success</button>
 <!-- end latest news -->
+{{#section "script"}}
+    <script type="application/javascript">
+
+    </script>
+{{/section}}

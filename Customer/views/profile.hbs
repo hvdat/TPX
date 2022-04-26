@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/profile.css">
 <!-- header -->
 <div class="top-header-area" id="sticker">
     <div class="container">
@@ -39,7 +40,7 @@
                                               id='lblCartCount'> 0 </span></a>
                                     {{/if}}
                                     {{#if user}}
-                                        <a>chào, {{user.username}}!</a>
+                                        <a href="/profile">chào, {{user.username}}!</a>
                                         <a class="mobile-hide search-bar-icon" href="/logout"><span
                                         >Đăng xuất</span></a>{{else}}
                                         <a class="mobile-hide search-bar-icon" href="/login"><span
@@ -77,41 +78,183 @@
 </div>
 <!-- end breadcrumb section -->
 
-<div
-        class="card mx-auto shadow p-3 mb-5 bg-white rounded"
-        style="width: 18rem; margin: 2rem 0;"
->
-    <img
-            class="card-img-top rounded mx-auto d-block"
-            src="{{user.avt}}"
-            alt="Card image cap"
-    />
-    {{!-- {{#if user.avatar}}
-    {{else}}
-      <img
-        class="card-img-top mx-auto"
-        src="https://cdn-icons-png.flaticon.com/512/1/1247.png"
-        alt="Card image cap"
-      />
-    {{/if}} --}}
-    <div class="card-body">
-        <h5 class="card-title text-center">{{user.username}}</h5>
-        <form method="post">
-            <div class="form-group">
-                <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Enter your avatar link"
-                        name="avtUrl"
-                />
+<!-- contact form -->
+<div class="contact-from-section mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-4">
+                <div class="contact-form-wrap">
+                    <div class="contact-form-box">
+                        <img class="rounded-circle" alt="100x100"
+                             src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg"
+                             data-holder-rendered="true">
+                        <p class="h3" id="user-name"></p>
+                    </div>
+                </div>
             </div>
-            <button
-                    type="submit"
-                    name="username"
-                    class="btn btn-primary"
-                    value="{{user.username}}"
-            >Submit
-            </button>
-        </form>
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="checkout-accordion-wrap">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card single-accordion">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse"
+                                            data-target="#collapseOne"
+                                            aria-expanded="true" aria-controls="collapseOne">
+                                        Thông tin cơ bản
+                                    </button>
+                                </h5>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                 data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="billing-address-form">
+                                        <form method="POST" id="update-form">
+                                            <label for="name">Họ và tên:</label>
+                                            <p>
+                                                <input type="text" name="name" id="name"/>
+                                            </p>
+                                            <label for="phone">Số điện thoại:</label>
+                                            <p>
+                                                <input type="tel" name="tel" id="tel"/>
+                                            </p>
+                                            <label for="address">Địa chỉ:</label>
+                                            <p>
+                                                <input type="text" name="address" id="address"/>
+                                            </p>
+                                            <label for="email">Email:</label>
+                                            <p>
+                                                <input type="email" name="email" id="email"/>
+                                            </p>
+                                            <div id="submit-box">
+                                                <button type="submit" id="update-info-form">Cập nhật thông tin</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card single-accordion">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                            data-target="#collapseTwo" aria-expanded="false"
+                                            aria-controls="collapseTwo">
+                                        Đổi mật khẩu
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                 data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="billing-address-form">
+                                        <form method="POST" id="change-pass-form">
+                                            <label for="old-pass">Mật khẩu cũ:</label>
+                                            <p>
+                                                <input type="password" placeholder="" name="old_pass" id="old-pass"/>
+                                            </p>
+                                            <label for="new-pass">Mật khẩu mới:</label>
+                                            <p>
+                                                <input type="password" placeholder="" name="new_pass" id="new-pass"/>
+                                            </p>
+                                            <div id="submit-box">
+                                                <button type="submit" id="update-info-form">Đổi mật khẩu</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card single-accordion">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                            data-target="#collapseThree" aria-expanded="false"
+                                            aria-controls="collapseThree">
+                                        Card Details
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                 data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="card-details">
+                                        <p>Your card details goes here.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<!-- end contact form -->
+
+{{#section "script"}}
+
+    <script type="application/javascript">
+        displayInfo();
+
+        $('#update-form').submit(function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: '/profile/update/info',
+                type: 'POST',
+                data: $('#update-form').serialize(),
+                success: function () {
+                    swal(
+                            'Cập nhật thành công!',
+                            '',
+                            'success'
+                    );
+                    displayInfo();
+                },
+            });
+        });
+
+        $('#change-pass-form').submit(function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: '/profile/update/password',
+                type: 'POST',
+                data: $('#change-pass-form').serialize(),
+                success: function () {
+                    swal(
+                            'Đổi thành công!',
+                            'Mật khẩu được đổi thành công, vui lòng đăng nhập lại!',
+                            'success'
+                    );
+                    displayInfo();
+                },
+                error: function () {
+                    swal(
+                            'Đổi thất bại!',
+                            'Bạn đã nhập sai mật khẩu cũ, vui lòng nhập lại!',
+                            'error'
+                    );
+                    displayInfo();
+                }
+            });
+        });
+
+        function displayInfo() {
+            $.ajax({
+                url: '/profile/api/getInfo',
+                type: 'GET',
+                success: function (data) {
+                    $('#name').val(data.name);
+                    $('#tel').val(data.tel);
+                    $('#address').val(data.address);
+                    $('#email').val(data.email);
+                    $('#user-name').text(data.name);
+                }
+            });
+        }
+    </script>
+
+{{/section}}

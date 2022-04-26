@@ -97,7 +97,8 @@
                 name="email"
                 placeholder="Email"
                 id="email"
-        /></div>
+        />
+        </div>
         <div class="form-group"><input
                 class="form-control"
                 type="text"
@@ -114,8 +115,8 @@
     </form>
 </div>
 {{#section "script"}}
-
     <script type="application/javascript">
+        toastr.success('Hi! I am success message.');
         $('#email').on('input', function () {
             $.getJSON('/api/check-email-exist/' + this.value, function (isExist) {
                 if (isExist) {
