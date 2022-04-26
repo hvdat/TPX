@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     username: {
       type: DataTypes.STRING(256),
       allowNull: true,
-      unique: "username_UNIQUE"
+      unique: "new_tablecol_UNIQUE"
     },
     password: {
       type: DataTypes.STRING(120),
@@ -48,7 +48,7 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "username_UNIQUE",
+        name: "new_tablecol_UNIQUE",
         unique: true,
         using: "BTREE",
         fields: [
