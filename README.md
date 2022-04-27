@@ -2,13 +2,13 @@
 Phát Triển Ứng Dụng Web - Đồ Án Cuối Kỳ
 
 ## Mục lục
-1. [Thông tin thành viên nhóm](#team-member)
-2. [Mô tả đồ án](#desc)
-3. [Các chức năng trong đồ án](#func)
-4. [Thiết kế cơ sở dữ liệu](#db)
-5. [UI/UX](#ui/ux)
-6. [Hướng dẫn sử dụng đồ án](#guideline)
-7. [Teamwork](#teamwork)
+1. Thông tin thành viên nhóm
+2. Mô tả đồ án
+3. Các chức năng trong đồ án
+4. Thiết kế cơ sở dữ liệu
+5. UI/UX
+6. Hướng dẫn sử dụng đồ án
+7. Teamwork
 
 ## 1. Thông tin thành viên nhóm:
 - [19127352 - Hồ Vạn Đạt](https://www.github.com/zen-h01)
@@ -105,13 +105,4 @@ Bước 4: Truy cập vào `localhost:3000` để mở sử dụng.
 	- Upload code lên github (collab chung 1 repo).
 	- Quay clip hướng dẫn.(https://shorturl.ae/SioDB).
 	- Upload trang admin lên host thực tế: https://admin-thuc-pham-xanh.herokuapp.com/
-
-
-[Thông tin thành viên nhóm]: #team-member
-[Mô tả đồ án]: #desc
-[Các chức năng trong đồ án]: #func
-[Thiết kế cơ sở dữ liệu]: #db
-[UI/UX]: #ui/ux
-[Hướng dẫn sử dụng đồ án]: #guideline
-[Teamwork]: #teamwork
 
