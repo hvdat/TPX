@@ -20,7 +20,7 @@ Phát Triển Ứng Dụng Web - Đồ Án Cuối Kỳ
 - Dùng *Heroku* để host và deploy đồ án lên internet.
 - Dùng *Clever Cloud* để host mysql.
 
-##3. Các chức năng trong đồ án:
+## 3. Các chức năng trong đồ án:
 #### - Trang dành cho khách hàng:
 - Xem sản phẩm.
 - Add sản phẩm vào giỏ hàng mà không cần login.
